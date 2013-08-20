@@ -1023,7 +1023,7 @@ void dlt_test_1(void)
      */
     if (result == DLT_SUCCESS)
     {
-        if (dl_join(list_3, list_4) == DLT_SUCCESS)
+        if (dl_join(list_3, list_4) == DL_SUCCESS)
         {
             UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
         }
@@ -1036,7 +1036,7 @@ void dlt_test_1(void)
     
     if (result == DLT_SUCCESS)
     {
-        if (dl_add_last(&list_4, _TAG, object_5) == DLT_SUCCESS)
+        if (dl_add_last(&list_4, _TAG, object_5) == DL_SUCCESS)
         {
             UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
         }
@@ -1049,7 +1049,7 @@ void dlt_test_1(void)
     
     if (result == DLT_SUCCESS)
     {
-        if (dl_join(list_4, list_1) == DLT_SUCCESS)
+        if (dl_join(list_4, list_1) == DL_SUCCESS)
         {
             UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
         }
