@@ -840,6 +840,19 @@ void dlt_test_1(void)
     {
         if (dl_get_object(NULL, NULL, (void **)&object_0) == DL_BAD_ARGUMENT)
         {
+            UART_1_PutString("  38\tdl_get_object()\t\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("  38\tdl_get_object()\t\tFAIL\r\n");
+            result = DLT_FAILURE;
+        }
+    }
+    
+    if (result == DLT_SUCCESS)
+    {
+        if (dl_get_object(node_3, NULL, NULL) == DL_BAD_ARGUMENT)
+        {
             UART_1_PutString("  39\tdl_get_object()\t\tPASS\r\n");
         }
         else
@@ -851,26 +864,13 @@ void dlt_test_1(void)
     
     if (result == DLT_SUCCESS)
     {
-        if (dl_get_object(node_3, NULL, NULL) == DL_BAD_ARGUMENT)
+        if (dl_get_object(node_3, &tag_0, (void **)&object_0) == DL_SUCCESS)
         {
             UART_1_PutString("  40\tdl_get_object()\t\tPASS\r\n");
         }
         else
         {
             UART_1_PutString("  40\tdl_get_object()\t\tFAIL\r\n");
-            result = DLT_FAILURE;
-        }
-    }
-    
-    if (result == DLT_SUCCESS)
-    {
-        if (dl_get_object(node_3, &tag_0, (void **)&object_0) == DL_SUCCESS)
-        {
-            UART_1_PutString("  41\tdl_get_object()\t\tPASS\r\n");
-        }
-        else
-        {
-            UART_1_PutString("  41\tdl_get_object()\t\tFAIL\r\n");
             result = DLT_FAILURE;
         }
     }
@@ -882,11 +882,11 @@ void dlt_test_1(void)
     {
         if (dl_extract(NULL) == DL_BAD_ARGUMENT)
         {
-            UART_1_PutString("  42\tdl_extract()\t\tPASS\r\n");
+            UART_1_PutString("  41\tdl_extract()\t\tPASS\r\n");
         }
         else
         {
-            UART_1_PutString("  42\tdl_extract()\t\tFAIL\r\n");
+            UART_1_PutString("  41\tdl_extract()\t\tFAIL\r\n");
             result = DLT_FAILURE;
         }
     }
@@ -895,11 +895,11 @@ void dlt_test_1(void)
     {
         if (dl_extract(node_4) == DL_SUCCESS)
         {
-            UART_1_PutString("  43\tdl_extract()\t\tPASS\r\n");
+            UART_1_PutString("  42\tdl_extract()\t\tPASS\r\n");
         }
         else
         {
-            UART_1_PutString("  43\tdl_extract()\t\tFAIL\r\n");
+            UART_1_PutString("  42\tdl_extract()\t\tFAIL\r\n");
             result = DLT_FAILURE;
         }
     }
@@ -911,11 +911,11 @@ void dlt_test_1(void)
     {
         if (dl_delete(NULL) == DL_BAD_ARGUMENT)
         {
-            UART_1_PutString("  44\tdl_delete()\t\tPASS\r\n");
+            UART_1_PutString("  43\tdl_delete()\t\tPASS\r\n");
         }
         else
         {
-            UART_1_PutString("  44\tdl_delete()\t\tFAIL\r\n");
+            UART_1_PutString("  43\tdl_delete()\t\tFAIL\r\n");
             result = DLT_FAILURE;
         }
     }
@@ -924,12 +924,12 @@ void dlt_test_1(void)
     {
         if (dl_delete(node_5) == DL_SUCCESS)
         {
-            UART_1_PutString("  45\tdl_delete()\t\tPASS\r\n");
+            UART_1_PutString("  44\tdl_delete()\t\tPASS\r\n");
             node_5 = NULL;
         }
         else
         {
-            UART_1_PutString("  45\tdl_delete()\t\tFAIL\r\n");
+            UART_1_PutString("  44\tdl_delete()\t\tFAIL\r\n");
             result = DLT_FAILURE;
         }
     }
@@ -941,11 +941,11 @@ void dlt_test_1(void)
     {
         if (dl_destroy(NULL) == DL_BAD_ARGUMENT)
         {
-            UART_1_PutString("  46\tdl_destroy()\t\tPASS\r\n");
+            UART_1_PutString("  45\tdl_destroy()\t\tPASS\r\n");
         }
         else
         {
-            UART_1_PutString("  46\tdl_destroy()\t\tFAIL\r\n");
+            UART_1_PutString("  45\tdl_destroy()\t\tFAIL\r\n");
             result = DLT_FAILURE;
         }
     }
@@ -954,11 +954,11 @@ void dlt_test_1(void)
     {
         if (dl_destroy(&node_2) == DL_SUCCESS)
         {
-            UART_1_PutString("  47\tdl_destroy()\t\tPASS\r\n");
+            UART_1_PutString("  46\tdl_destroy()\t\tPASS\r\n");
         }
         else
         {
-            UART_1_PutString("  47\tdl_destroy()\t\tFAIL\r\n");
+            UART_1_PutString("  46\tdl_destroy()\t\tFAIL\r\n");
             result = DLT_FAILURE;
         }
     }
@@ -969,6 +969,19 @@ void dlt_test_1(void)
     if (result == DLT_SUCCESS)
     {
         if (dl_join(NULL, NULL) == DL_BAD_ARGUMENT)
+        {
+            UART_1_PutString("  47\tdl_join()\t\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("  47\tdl_join()\t\tFAIL\r\n");
+            result = DLT_FAILURE;
+        }
+    }
+    
+    if (result == DLT_SUCCESS)
+    {
+        if (dl_join(NULL, list_2) == DL_BAD_ARGUMENT)
         {
             UART_1_PutString("  48\tdl_join()\t\tPASS\r\n");
         }
@@ -981,7 +994,7 @@ void dlt_test_1(void)
     
     if (result == DLT_SUCCESS)
     {
-        if (dl_join(NULL, list_2) == DL_BAD_ARGUMENT)
+        if (dl_join(list_1, NULL) == DL_BAD_ARGUMENT)
         {
             UART_1_PutString("  49\tdl_join()\t\tPASS\r\n");
         }
@@ -994,26 +1007,13 @@ void dlt_test_1(void)
     
     if (result == DLT_SUCCESS)
     {
-        if (dl_join(list_1, NULL) == DL_BAD_ARGUMENT)
+        if (dl_join(list_1, list_2) == DL_SUCCESS)
         {
             UART_1_PutString("  50\tdl_join()\t\tPASS\r\n");
         }
         else
         {
             UART_1_PutString("  50\tdl_join()\t\tFAIL\r\n");
-            result = DLT_FAILURE;
-        }
-    }
-    
-    if (result == DLT_SUCCESS)
-    {
-        if (dl_join(list_1, list_2) == DL_SUCCESS)
-        {
-            UART_1_PutString("  51\tdl_join()\t\tPASS\r\n");
-        }
-        else
-        {
-            UART_1_PutString("  51\tdl_join()\t\tFAIL\r\n");
             result = DLT_FAILURE;
         }
     }
@@ -1074,6 +1074,19 @@ void dlt_test_1(void)
     {
         if (dl_exchange(NULL, NULL) == DL_BAD_ARGUMENT)
         {
+            UART_1_PutString("  51\tdl_exchange()\t\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("  51\tdl_exchange()\t\tFAIL\r\n");
+            result = DLT_FAILURE;
+        }
+    }
+    
+    if (result == DLT_SUCCESS)
+    {
+        if (dl_exchange(NULL, node_2) == DL_BAD_ARGUMENT)
+        {
             UART_1_PutString("  52\tdl_exchange()\t\tPASS\r\n");
         }
         else
@@ -1085,7 +1098,7 @@ void dlt_test_1(void)
     
     if (result == DLT_SUCCESS)
     {
-        if (dl_exchange(NULL, node_2) == DL_BAD_ARGUMENT)
+        if (dl_exchange(node_1, NULL) == DL_BAD_ARGUMENT)
         {
             UART_1_PutString("  53\tdl_exchange()\t\tPASS\r\n");
         }
@@ -1098,7 +1111,7 @@ void dlt_test_1(void)
     
     if (result == DLT_SUCCESS)
     {
-        if (dl_exchange(node_1, NULL) == DL_BAD_ARGUMENT)
+        if (dl_exchange(node_1, node_2) == DL_SUCCESS)
         {
             UART_1_PutString("  54\tdl_exchange()\t\tPASS\r\n");
         }
@@ -1124,7 +1137,7 @@ void dlt_test_1(void)
     
     if (result == DLT_SUCCESS)
     {
-        if (dl_exchange(node_1, node_2) == DL_SUCCESS)
+        if (dl_exchange(node_1, node_3) == DL_SUCCESS)
         {
             UART_1_PutString("  56\tdl_exchange()\t\tPASS\r\n");
         }
@@ -1148,25 +1161,25 @@ void dlt_test_1(void)
         }
     }
     
-    if (result == DLT_SUCCESS)
-    {
-        if (dl_exchange(node_1, node_3) == DL_SUCCESS)
-        {
-            UART_1_PutString("  58\tdl_exchange()\t\tPASS\r\n");
-        }
-        else
-        {
-            UART_1_PutString("  58\tdl_exchange()\t\tFAIL\r\n");
-            result = DLT_FAILURE;
-        }
-    }
-    
     /*
      *  Test dl_update().
      */
     if (result == DLT_SUCCESS)
     {
         if (dl_update(NULL, _TAG, object_1) == DL_BAD_ARGUMENT)
+        {
+            UART_1_PutString("  58\tdl_update()\t\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("  58\tdl_update()\t\tFAIL\r\n");
+            result = DLT_FAILURE;
+        }
+    }
+    
+    if (result == DLT_SUCCESS)
+    {
+        if (dl_update(&node_4, _TAG, object_1) == DL_SUCCESS)
         {
             UART_1_PutString("  59\tdl_update()\t\tPASS\r\n");
         }
@@ -1179,26 +1192,13 @@ void dlt_test_1(void)
     
     if (result == DLT_SUCCESS)
     {
-        if (dl_update(&node_4, _TAG, object_1) == DL_SUCCESS)
+        if (dl_update(&node_5, _TAG, object_1) == DL_SUCCESS)
         {
             UART_1_PutString("  60\tdl_update()\t\tPASS\r\n");
         }
         else
         {
             UART_1_PutString("  60\tdl_update()\t\tFAIL\r\n");
-            result = DLT_FAILURE;
-        }
-    }
-    
-    if (result == DLT_SUCCESS)
-    {
-        if (dl_update(&node_5, _TAG, object_1) == DL_SUCCESS)
-        {
-            UART_1_PutString("  61\tdl_update()\t\tPASS\r\n");
-        }
-        else
-        {
-            UART_1_PutString("  61\tdl_update()\t\tFAIL\r\n");
             result = DLT_FAILURE;
         }
     }

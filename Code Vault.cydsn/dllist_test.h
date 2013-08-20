@@ -116,32 +116,32 @@
  *    35    dl_get_count()          PASS
  *    36    dl_get_count()          PASS
  *    37    dl_get_object()         PASS
+ *    38    dl_get_object()         PASS
  *    39    dl_get_object()         PASS
  *    40    dl_get_object()         PASS
- *    41    dl_get_object()         PASS
+ *    41    dl_extract()            PASS
  *    42    dl_extract()            PASS
- *    43    dl_extract()            PASS
+ *    43    dl_delete()             PASS
  *    44    dl_delete()             PASS
- *    45    dl_delete()             PASS
+ *    45    dl_destroy()            PASS
  *    46    dl_destroy()            PASS
- *    47    dl_destroy()            PASS
+ *    47    dl_join()               PASS
  *    48    dl_join()               PASS
  *    49    dl_join()               PASS
  *    50    dl_join()               PASS
- *    51    dl_join()               PASS
  *     -    Initialise test...      PASS
  *     -    Initialise test...      PASS
  *     -    Initialise test...      PASS
+ *    51    dl_exchange()           PASS
  *    52    dl_exchange()           PASS
  *    53    dl_exchange()           PASS
  *    54    dl_exchange()           PASS
  *    55    dl_exchange()           PASS
  *    56    dl_exchange()           PASS
  *    57    dl_exchange()           PASS
- *    58    dl_exchange()           PASS
+ *    58    dl_update()             PASS
  *    59    dl_update()             PASS
  *    60    dl_update()             PASS
- *    61    dl_update()             PASS
  *
  *  TEST PASSED
  *  @endcode
