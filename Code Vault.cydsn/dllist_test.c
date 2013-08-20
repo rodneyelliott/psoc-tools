@@ -1272,6 +1272,10 @@ uint8 _create_object(char *string, uint8 number, DLT_OBJECT **object)
                 result = DLT_NO_MEMORY;
             }
         }
+        else
+        {
+            result = DLT_NO_MEMORY;
+        }
     }
     
     return result;
