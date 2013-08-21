@@ -211,7 +211,7 @@ uint8 de_remove_last(DE_LIST *deque, void **object);
  *  @param[in] deque A pointer to a deque.
  *  @param[out] tag A pointer to the returned object's tag.
  *  @param[out] object A pointer to a pointer to the returned object.
- *  @return #DL_SUCCESS if successful, otherwise #DL_BAD_ARGUMENT.
+ *  @return #DE_SUCCESS if successful, otherwise #DE_BAD_ARGUMENT.
  *  @remark This function does not remove the object from the node,
  *      nor does it remove the node from the deque.
  *  @remark The tag parameter is optional, and may be set to NULL if
@@ -227,7 +227,7 @@ uint8 de_get_first_object(DE_LIST *deque, uint16 *tag, void **object);
  *  @param[in] deque A pointer to a deque.
  *  @param[out] tag A pointer to the returned object's tag.
  *  @param[out] object A pointer to a pointer to the returned object.
- *  @return #DL_SUCCESS if successful, otherwise #DL_BAD_ARGUMENT.
+ *  @return #DE_SUCCESS if successful, otherwise #DE_BAD_ARGUMENT.
  *  @remark This function does not remove the object from the node,
  *      nor does it remove the node from the deque.
  *  @remark The tag parameter is optional, and may be set to NULL if
@@ -258,14 +258,14 @@ uint32 de_get_limit(DE_LIST *deque);
  *  @brief Set the node limit of a deque.
  *  @param[in] deque A pointer to a deque.
  *  @param[in] limit The maximum number of nodes allowed in the deque.
- *  @return #DL_SUCCESS if successful, otherwise #DL_BAD_ARGUMENT.
+ *  @return #DE_SUCCESS if successful, otherwise #DE_BAD_ARGUMENT.
  */
 uint8 de_set_limit(DE_LIST *deque, uint32 limit);
 
 /**
  *  @brief Destroy a deque.
  *  @param[in] deque A pointer to a deque.
- *  @return #DL_SUCCESS if successful, otherwise #DL_BAD_ARGUMENT.
+ *  @return #DE_SUCCESS if successful, otherwise #DE_BAD_ARGUMENT.
  *  @remark Deletes all nodes from the deque, and sets the node
  *      count to zero.
  *  @warning It is up to the caller to ensure that the deque argument
