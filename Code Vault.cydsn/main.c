@@ -38,6 +38,7 @@
  ****************************************************************************/
 #include <device.h>
 
+#include "deque_test.h"
 #include "dllist_test.h"
 #include "main.h"
 
@@ -73,7 +74,8 @@ void main()
 {
     CyGlobalIntEnable;
     
-    dlt_test_1();
+    //dlt_test_1();
+    det_test_1();
     
     for (;;)
     {
