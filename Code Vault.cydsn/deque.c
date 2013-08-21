@@ -267,7 +267,7 @@ uint8 de_destroy(DE_LIST *deque)
             de_remove_first(deque, NULL);
         }
         
-        result = DL_SUCCESS;
+        result = DE_SUCCESS;
     }
     
     return result;
