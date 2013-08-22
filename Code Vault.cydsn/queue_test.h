@@ -83,16 +83,17 @@
  *    18    qu_get_first_object()   PASS
  *    19    qu_get_first_object()   PASS
  *    20    qu_get_first_object()   PASS
- *    21    qu_get_count()          PASS
+ *    21    qu_get_first_object()   PASS
  *    22    qu_get_count()          PASS
- *    23    qu_get_limit()          PASS
+ *    23    qu_get_count()          PASS
  *    24    qu_get_limit()          PASS
- *    25    qu_set_limit()          PASS
+ *    25    qu_get_limit()          PASS
  *    26    qu_set_limit()          PASS
  *    27    qu_set_limit()          PASS
- *    28    qu_destroy()            PASS
+ *    28    qu_set_limit()          PASS
  *    29    qu_destroy()            PASS
  *    30    qu_destroy()            PASS
+ *    31    qu_destroy()            PASS
  *
  *  TEST PASSED
  *  @endcode
