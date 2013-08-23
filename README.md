@@ -53,8 +53,8 @@ Authors
 
 Code by Rodney Elliott, <rodney.elliott@gmail.com>
 
-The doubly linked list library is based upon code by Richard Heathfield. This
-code was contained on the CD that accompanied the book [C Unleashed][book],
-and was released under the GPL.
+The doubly linked list and circular linked list libraries are based upon code
+by Richard Heathfield. This code was contained on the CD that accompanied the
+book [C Unleashed][book], and was released under the GPL.
 
 [book]: http://www.amazon.com/C-Unleashed-Richard-Heathfield/dp/0672318962

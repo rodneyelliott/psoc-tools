@@ -38,6 +38,7 @@
  ****************************************************************************/
 #include <device.h>
 
+#include "cllist_test.h"
 #include "deque_test.h"
 #include "dllist_test.h"
 #include "queue_test.h"
@@ -77,7 +78,8 @@ void main()
     
     //dlt_test_1();
     //det_test_1();
-    qut_test_1();
+    //qut_test_1();
+    clt_test_1();
     
     for (;;)
     {
