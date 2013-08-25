@@ -183,7 +183,8 @@ uint8 qu_remove_first(QU_LIST *queue, void **object);
  *  @param[in] queue A pointer to a queue.
  *  @param[out] tag A pointer to the returned object's tag.
  *  @param[out] object A pointer to a pointer to the returned object.
- *  @return #QU_SUCCESS if successful, otherwise #QU_BAD_ARGUMENT.
+ *  @return #QU_SUCCESS if successful, otherwise #QU_BAD_ARGUMENT or
+ *      #QU_EMPTY.
  *  @remark This function does not remove the object from the node,
  *      nor does it remove the node from the queue.
  *  @remark The tag parameter is optional, and may be set to NULL if

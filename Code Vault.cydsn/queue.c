@@ -135,7 +135,14 @@ uint8 qu_get_first_object(QU_LIST *queue, uint16 *tag, void **object)
 
     if (queue != NULL)
     {
-        result = dl_get_object(dl_get_first(queue->list), tag, object);
+        if (queue->count > 0)
+        {
+            result = dl_get_object(dl_get_first(queue->list), tag, object);
+        }
+        else
+        {
+            result = QU_EMPTY;
+        }
     }
     
     return result;

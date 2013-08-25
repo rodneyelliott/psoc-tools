@@ -506,7 +506,21 @@ void qut_test_1(void)
             result = QUT_FAILURE;
         }
     }
-        
+    
+    if (result == QUT_SUCCESS)
+    {
+        if (qu_get_first_object(&queue_2, &tag_0,
+            (void **)&object_0) == QU_EMPTY)
+        {
+            UART_1_PutString("  22\tqu_get_first_object()\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("  22\tqu_get_first_object()\tFAIL\r\n");
+            result = QUT_FAILURE;
+        }
+    }
+    
     /*
      *  Test qu_get_count().
      */
@@ -514,11 +528,11 @@ void qut_test_1(void)
     {
         if (qu_get_count(NULL) == 0)
         {
-            UART_1_PutString("  22\tqu_get_count()\t\tPASS\r\n");
+            UART_1_PutString("  23\tqu_get_count()\t\tPASS\r\n");
         }
         else
         {
-            UART_1_PutString("  22\tqu_get_count()\t\tFAIL\r\n");
+            UART_1_PutString("  23\tqu_get_count()\t\tFAIL\r\n");
             result = QUT_FAILURE;
         }
     }
@@ -527,11 +541,11 @@ void qut_test_1(void)
     {
         if (qu_get_count(&queue_1) == 4)
         {
-            UART_1_PutString("  23\tqu_get_count()\t\tPASS\r\n");
+            UART_1_PutString("  24\tqu_get_count()\t\tPASS\r\n");
         }
         else
         {
-            UART_1_PutString("  23\tqu_get_count()\t\tFAIL\r\n");
+            UART_1_PutString("  24\tqu_get_count()\t\tFAIL\r\n");
             result = QUT_FAILURE;
         }
     }
@@ -543,11 +557,11 @@ void qut_test_1(void)
     {
         if (qu_get_limit(NULL) == 0)
         {
-            UART_1_PutString("  24\tqu_get_limit()\t\tPASS\r\n");
+            UART_1_PutString("  25\tqu_get_limit()\t\tPASS\r\n");
         }
         else
         {
-            UART_1_PutString("  24\tqu_get_limit()\t\tFAIL\r\n");
+            UART_1_PutString("  25\tqu_get_limit()\t\tFAIL\r\n");
             result = QUT_FAILURE;
         }
     }
@@ -556,11 +570,11 @@ void qut_test_1(void)
     {
         if (qu_get_limit(&queue_1) == 0)
         {
-            UART_1_PutString("  25\tqu_get_limit()\t\tPASS\r\n");
+            UART_1_PutString("  26\tqu_get_limit()\t\tPASS\r\n");
         }
         else
         {
-            UART_1_PutString("  25\tqu_get_limit()\t\tFAIL\r\n");
+            UART_1_PutString("  26\tqu_get_limit()\t\tFAIL\r\n");
             result = QUT_FAILURE;
         }
     }
@@ -571,19 +585,6 @@ void qut_test_1(void)
     if (result == QUT_SUCCESS)
     {
         if (qu_set_limit(NULL, 10) == QU_BAD_ARGUMENT)
-        {
-            UART_1_PutString("  26\tqu_set_limit()\t\tPASS\r\n");
-        }
-        else
-        {
-            UART_1_PutString("  26\tqu_set_limit()\t\tFAIL\r\n");
-            result = QUT_FAILURE;
-        }
-    }
-    
-    if (result == QUT_SUCCESS)
-    {
-        if (qu_set_limit(&queue_1, 10) == QU_SUCCESS)
         {
             UART_1_PutString("  27\tqu_set_limit()\t\tPASS\r\n");
         }
@@ -596,13 +597,26 @@ void qut_test_1(void)
     
     if (result == QUT_SUCCESS)
     {
-        if (queue_1.limit == 10)
+        if (qu_set_limit(&queue_1, 10) == QU_SUCCESS)
         {
             UART_1_PutString("  28\tqu_set_limit()\t\tPASS\r\n");
         }
         else
         {
             UART_1_PutString("  28\tqu_set_limit()\t\tFAIL\r\n");
+            result = QUT_FAILURE;
+        }
+    }
+    
+    if (result == QUT_SUCCESS)
+    {
+        if (queue_1.limit == 10)
+        {
+            UART_1_PutString("  29\tqu_set_limit()\t\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("  29\tqu_set_limit()\t\tFAIL\r\n");
             result = QUT_FAILURE;
         }
     }
@@ -613,19 +627,6 @@ void qut_test_1(void)
     if (result == QUT_SUCCESS)
     {
         if (qu_destroy(NULL) == QU_BAD_ARGUMENT)
-        {
-            UART_1_PutString("  29\tqu_destroy()\t\tPASS\r\n");
-        }
-        else
-        {
-            UART_1_PutString("  29\tqu_destroy()\t\tFAIL\r\n");
-            result = QUT_FAILURE;
-        }
-    }
-    
-    if (result == QUT_SUCCESS)
-    {
-        if (qu_destroy(&queue_1) == QU_SUCCESS)
         {
             UART_1_PutString("  30\tqu_destroy()\t\tPASS\r\n");
         }
@@ -638,13 +639,26 @@ void qut_test_1(void)
     
     if (result == QUT_SUCCESS)
     {
-        if (queue_1.count == 0)
+        if (qu_destroy(&queue_1) == QU_SUCCESS)
         {
             UART_1_PutString("  31\tqu_destroy()\t\tPASS\r\n");
         }
         else
         {
             UART_1_PutString("  31\tqu_destroy()\t\tFAIL\r\n");
+            result = QUT_FAILURE;
+        }
+    }
+    
+    if (result == QUT_SUCCESS)
+    {
+        if (queue_1.count == 0)
+        {
+            UART_1_PutString("  32\tqu_destroy()\t\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("  32\tqu_destroy()\t\tFAIL\r\n");
             result = QUT_FAILURE;
         }
     }
