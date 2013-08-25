@@ -100,11 +100,12 @@
  *    34    cl_get_current_object() PASS
  *    35    cl_get_current_object() PASS
  *    36    cl_get_current_object() PASS
- *    37    cl_get_count()          PASS
+ *    37    cl_get_current_object() PASS
  *    38    cl_get_count()          PASS
- *    39    cl_destroy()            PASS
+ *    39    cl_get_count()          PASS
  *    40    cl_destroy()            PASS
  *    41    cl_destroy()            PASS
+ *    42    cl_destroy()            PASS
  *
  *  TEST PASSED
  *  @endcode

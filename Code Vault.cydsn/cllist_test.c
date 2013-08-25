@@ -713,6 +713,20 @@ void clt_test_1(void)
         }
     }
     
+    if (result == CLT_SUCCESS)
+    {
+        if (cl_get_current_object(&list_3, &tag_0,
+            (void **)&object_0) == CL_EMPTY)
+        {
+            UART_1_PutString("  37\tcl_get_current_object()\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("  37\tcl_get_current_object()\tFAIL\r\n");
+            result = CLT_FAILURE;
+        }
+    }
+    
     /*
      *  Test cl_get_count().
      */
@@ -720,11 +734,11 @@ void clt_test_1(void)
     {
         if (cl_get_count(NULL) == 0)
         {
-            UART_1_PutString("  37\tcl_get_count()\t\tPASS\r\n");
+            UART_1_PutString("  38\tcl_get_count()\t\tPASS\r\n");
         }
         else
         {
-            UART_1_PutString("  37\tcl_get_count()\t\tFAIL\r\n");
+            UART_1_PutString("  38\tcl_get_count()\t\tFAIL\r\n");
             result = CLT_FAILURE;
         }
     }
@@ -733,11 +747,11 @@ void clt_test_1(void)
     {
         if (cl_get_count(&list_2) == 4)
         {
-            UART_1_PutString("  38\tcl_get_count()\t\tPASS\r\n");
+            UART_1_PutString("  39\tcl_get_count()\t\tPASS\r\n");
         }
         else
         {
-            UART_1_PutString("  38tcl_get_count()\t\tFAIL\r\n");
+            UART_1_PutString("  39tcl_get_count()\t\tFAIL\r\n");
             result = CLT_FAILURE;
         }
     }
@@ -748,19 +762,6 @@ void clt_test_1(void)
     if (result == CLT_SUCCESS)
     {
         if (cl_destroy(NULL) == CL_BAD_ARGUMENT)
-        {
-            UART_1_PutString("  39\tcl_destroy()\t\tPASS\r\n");
-        }
-        else
-        {
-            UART_1_PutString("  39\tcl_destroy()\t\tFAIL\r\n");
-            result = CLT_FAILURE;
-        }
-    }
-    
-    if (result == CLT_SUCCESS)
-    {
-        if (cl_destroy(&list_2) == CL_SUCCESS)
         {
             UART_1_PutString("  40\tcl_destroy()\t\tPASS\r\n");
         }
@@ -773,13 +774,26 @@ void clt_test_1(void)
     
     if (result == CLT_SUCCESS)
     {
-        if (list_2.count == 0)
+        if (cl_destroy(&list_2) == CL_SUCCESS)
         {
             UART_1_PutString("  41\tcl_destroy()\t\tPASS\r\n");
         }
         else
         {
             UART_1_PutString("  41\tcl_destroy()\t\tFAIL\r\n");
+            result = CLT_FAILURE;
+        }
+    }
+    
+    if (result == CLT_SUCCESS)
+    {
+        if (list_2.count == 0)
+        {
+            UART_1_PutString("  42\tcl_destroy()\t\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("  42\tcl_destroy()\t\tFAIL\r\n");
             result = CLT_FAILURE;
         }
     }

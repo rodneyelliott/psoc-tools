@@ -265,7 +265,8 @@ uint8 cl_move_backward(CL_LIST *list, uint32 places);
  *  @param[in] list A pointer to a CLL.
  *  @param[out] tag A pointer to the returned object's tag.
  *  @param[out] object A pointer to a pointer to the returned object.
- *  @return #CL_SUCCESS if successful, otherwise #CL_BAD_ARGUMENT.
+ *  @return #CL_SUCCESS if successful, otherwise #CL_BAD_ARGUMENT or
+ *      #CL_EMPTY.
  *  @remark This function does not remove the object from the node,
  *      nor does it remove the node from the CLL.
  *  @remark The tag parameter is optional, and may be set to NULL if

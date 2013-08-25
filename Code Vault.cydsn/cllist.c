@@ -258,14 +258,21 @@ uint8 cl_get_current_object(CL_LIST *list, uint16 *tag, void **object)
     
     if (list != NULL && object != NULL)
     {
-        if (tag != NULL)
+        if (list->count > 0)
         {
-            *tag = list->list->tag;
+            if (tag != NULL)
+            {
+                *tag = list->list->tag;
+            }
+            
+            *object = list->list->object;
+            
+            result = CL_SUCCESS;
         }
-        
-        *object = list->list->object;
-        
-        result = CL_SUCCESS;
+        else
+        {
+            result = CL_EMPTY;
+        }
     }
     
     return result;
