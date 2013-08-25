@@ -98,23 +98,25 @@
  *    33    de_get_first_object()   PASS
  *    34    de_get_first_object()   PASS
  *    35    de_get_first_object()   PASS
- *    36    de_get_last_object()    PASS
+ *    36    de_get_first_object()   PASS
  *    37    de_get_last_object()    PASS
  *    38    de_get_last_object()    PASS
  *    39    de_get_last_object()    PASS
  *    40    de_get_last_object()    PASS
  *    41    de_get_last_object()    PASS
  *    42    de_get_last_object()    PASS
- *    43    de_get_count()          PASS
- *    44    de_get_count()          PASS
- *    45    de_get_limit()          PASS
- *    46    de_get_limit()          PASS
- *    47    de_set_limit()          PASS
- *    48    de_set_limit()          PASS
+ *    43    de_get_last_object()    PASS
+ *    44    de_get_last_object()    PASS
+ *    45    de_get_count()          PASS
+ *    46    de_get_count()          PASS
+ *    47    de_get_limit()          PASS
+ *    48    de_get_limit()          PASS
  *    49    de_set_limit()          PASS
- *    50    de_destroy()            PASS
- *    51    de_destroy()            PASS
+ *    50    de_set_limit()          PASS
+ *    51    de_set_limit()          PASS
  *    52    de_destroy()            PASS
+ *    53    de_destroy()            PASS
+ *    54    de_destroy()            PASS
  *
  *  TEST PASSED
  *  @endcode

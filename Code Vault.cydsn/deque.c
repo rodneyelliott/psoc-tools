@@ -200,7 +200,14 @@ uint8 de_get_first_object(DE_LIST *deque, uint16 *tag, void **object)
 
     if (deque != NULL)
     {
-        result = dl_get_object(dl_get_first(deque->list), tag, object);
+        if (deque->count > 0)
+        {
+            result = dl_get_object(dl_get_first(deque->list), tag, object);
+        }
+        else
+        {
+            result = DE_EMPTY;
+        }
     }
     
     return result;
@@ -212,7 +219,14 @@ uint8 de_get_last_object(DE_LIST *deque, uint16 *tag, void **object)
 
     if (deque != NULL)
     {
-        result = dl_get_object(dl_get_last(deque->list), tag, object);
+        if (deque->count > 0)
+        {
+            result = dl_get_object(dl_get_last(deque->list), tag, object);
+        }
+        else
+        {
+            result = DE_EMPTY;
+        }
     }
     
     return result;

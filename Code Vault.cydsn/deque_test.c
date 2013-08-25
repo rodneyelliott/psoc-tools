@@ -698,26 +698,26 @@ void det_test_1(void)
         }
     }
     
+    if (result == DET_SUCCESS)
+    {
+        if (de_get_first_object(&deque_2, &tag_0,
+            (void **)&object_0) == DE_EMPTY)
+        {
+            UART_1_PutString("  36\tde_get_first_object()\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("  36\tde_get_first_object()\tFAIL\r\n");
+            result = DET_FAILURE;
+        }
+    }
+    
     /*
      *  Test de_get_last_object().
      */
     if (result == DET_SUCCESS)
     {
         if (de_get_last_object(NULL, NULL, NULL) == DE_BAD_ARGUMENT)
-        {
-            UART_1_PutString("  36\tde_get_last_object()\tPASS\r\n");
-        }
-        else
-        {
-            UART_1_PutString("  36\tde_get_last_object()\tFAIL\r\n");
-            result = DET_FAILURE;
-        }
-    }
-    
-    if (result == DET_SUCCESS)
-    {
-        if (de_get_last_object(NULL, NULL,
-            (void **)&object_0) == DE_BAD_ARGUMENT)
         {
             UART_1_PutString("  37\tde_get_last_object()\tPASS\r\n");
         }
@@ -730,7 +730,8 @@ void det_test_1(void)
     
     if (result == DET_SUCCESS)
     {
-        if (de_get_last_object(&deque_1, NULL, NULL) == DE_BAD_ARGUMENT)
+        if (de_get_last_object(NULL, NULL,
+            (void **)&object_0) == DE_BAD_ARGUMENT)
         {
             UART_1_PutString("  38\tde_get_last_object()\tPASS\r\n");
         }
@@ -743,8 +744,7 @@ void det_test_1(void)
     
     if (result == DET_SUCCESS)
     {
-        if (de_get_last_object(&deque_1, NULL,
-            (void **)&object_0) == DE_SUCCESS)
+        if (de_get_last_object(&deque_1, NULL, NULL) == DE_BAD_ARGUMENT)
         {
             UART_1_PutString("  39\tde_get_last_object()\tPASS\r\n");
         }
@@ -757,7 +757,8 @@ void det_test_1(void)
     
     if (result == DET_SUCCESS)
     {
-        if (object_0->number == 1)
+        if (de_get_last_object(&deque_1, NULL,
+            (void **)&object_0) == DE_SUCCESS)
         {
             UART_1_PutString("  40\tde_get_last_object()\tPASS\r\n");
         }
@@ -770,8 +771,7 @@ void det_test_1(void)
     
     if (result == DET_SUCCESS)
     {
-        if (de_get_last_object(&deque_1, &tag_0,
-            (void **)&object_0) == DE_SUCCESS)
+        if (object_0->number == 1)
         {
             UART_1_PutString("  41\tde_get_last_object()\tPASS\r\n");
         }
@@ -784,13 +784,41 @@ void det_test_1(void)
     
     if (result == DET_SUCCESS)
     {
-        if (tag_0 == 300)
+        if (de_get_last_object(&deque_1, &tag_0,
+            (void **)&object_0) == DE_SUCCESS)
         {
             UART_1_PutString("  42\tde_get_last_object()\tPASS\r\n");
         }
         else
         {
             UART_1_PutString("  42\tde_get_last_object()\tFAIL\r\n");
+            result = DET_FAILURE;
+        }
+    }
+    
+    if (result == DET_SUCCESS)
+    {
+        if (tag_0 == 300)
+        {
+            UART_1_PutString("  43\tde_get_last_object()\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("  43\tde_get_last_object()\tFAIL\r\n");
+            result = DET_FAILURE;
+        }
+    }
+    
+    if (result == DET_SUCCESS)
+    {
+        if (de_get_last_object(&deque_2, &tag_0,
+            (void **)&object_0) == DE_EMPTY)
+        {
+            UART_1_PutString("  44\tde_get_last_object()\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("  44\tde_get_last_object()\tFAIL\r\n");
             result = DET_FAILURE;
         }
     }
@@ -802,11 +830,11 @@ void det_test_1(void)
     {
         if (de_get_count(NULL) == 0)
         {
-            UART_1_PutString("  43\tde_get_count()\t\tPASS\r\n");
+            UART_1_PutString("  45\tde_get_count()\t\tPASS\r\n");
         }
         else
         {
-            UART_1_PutString("  43\tde_get_count()\t\tFAIL\r\n");
+            UART_1_PutString("  45\tde_get_count()\t\tFAIL\r\n");
             result = DET_FAILURE;
         }
     }
@@ -815,11 +843,11 @@ void det_test_1(void)
     {
         if (de_get_count(&deque_1) == 4)
         {
-            UART_1_PutString("  44\tde_get_count()\t\tPASS\r\n");
+            UART_1_PutString("  46\tde_get_count()\t\tPASS\r\n");
         }
         else
         {
-            UART_1_PutString("  44\tde_get_count()\t\tFAIL\r\n");
+            UART_1_PutString("  46\tde_get_count()\t\tFAIL\r\n");
             result = DET_FAILURE;
         }
     }
@@ -831,11 +859,11 @@ void det_test_1(void)
     {
         if (de_get_limit(NULL) == 0)
         {
-            UART_1_PutString("  45\tde_get_limit()\t\tPASS\r\n");
+            UART_1_PutString("  47\tde_get_limit()\t\tPASS\r\n");
         }
         else
         {
-            UART_1_PutString("  45\tde_get_limit()\t\tFAIL\r\n");
+            UART_1_PutString("  47\tde_get_limit()\t\tFAIL\r\n");
             result = DET_FAILURE;
         }
     }
@@ -844,11 +872,11 @@ void det_test_1(void)
     {
         if (de_get_limit(&deque_1) == 0)
         {
-            UART_1_PutString("  46\tde_get_limit()\t\tPASS\r\n");
+            UART_1_PutString("  48\tde_get_limit()\t\tPASS\r\n");
         }
         else
         {
-            UART_1_PutString("  46\tde_get_limit()\t\tFAIL\r\n");
+            UART_1_PutString("  48\tde_get_limit()\t\tFAIL\r\n");
             result = DET_FAILURE;
         }
     }
@@ -860,11 +888,11 @@ void det_test_1(void)
     {
         if (de_set_limit(NULL, 10) == DE_BAD_ARGUMENT)
         {
-            UART_1_PutString("  47\tde_set_limit()\t\tPASS\r\n");
+            UART_1_PutString("  49\tde_set_limit()\t\tPASS\r\n");
         }
         else
         {
-            UART_1_PutString("  47\tde_set_limit()\t\tFAIL\r\n");
+            UART_1_PutString("  49\tde_set_limit()\t\tFAIL\r\n");
             result = DET_FAILURE;
         }
     }
@@ -873,11 +901,11 @@ void det_test_1(void)
     {
         if (de_set_limit(&deque_1, 10) == DE_SUCCESS)
         {
-            UART_1_PutString("  48\tde_set_limit()\t\tPASS\r\n");
+            UART_1_PutString("  50\tde_set_limit()\t\tPASS\r\n");
         }
         else
         {
-            UART_1_PutString("  48\tde_set_limit()\t\tFAIL\r\n");
+            UART_1_PutString("  50\tde_set_limit()\t\tFAIL\r\n");
             result = DET_FAILURE;
         }
     }
@@ -886,11 +914,11 @@ void det_test_1(void)
     {
         if (deque_1.limit == 10)
         {
-            UART_1_PutString("  49\tde_set_limit()\t\tPASS\r\n");
+            UART_1_PutString("  51\tde_set_limit()\t\tPASS\r\n");
         }
         else
         {
-            UART_1_PutString("  49\tde_set_limit()\t\tFAIL\r\n");
+            UART_1_PutString("  51\tde_set_limit()\t\tFAIL\r\n");
             result = DET_FAILURE;
         }
     }
@@ -902,11 +930,11 @@ void det_test_1(void)
     {
         if (de_destroy(NULL) == DE_BAD_ARGUMENT)
         {
-            UART_1_PutString("  50\tde_destroy()\t\tPASS\r\n");
+            UART_1_PutString("  52\tde_destroy()\t\tPASS\r\n");
         }
         else
         {
-            UART_1_PutString("  50\tde_destroy()\t\tFAIL\r\n");
+            UART_1_PutString("  52\tde_destroy()\t\tFAIL\r\n");
             result = DET_FAILURE;
         }
     }
@@ -915,11 +943,11 @@ void det_test_1(void)
     {
         if (de_destroy(&deque_1) == DE_SUCCESS)
         {
-            UART_1_PutString("  51\tde_destroy()\t\tPASS\r\n");
+            UART_1_PutString("  53\tde_destroy()\t\tPASS\r\n");
         }
         else
         {
-            UART_1_PutString("  51\tde_destroy()\t\tFAIL\r\n");
+            UART_1_PutString("  53\tde_destroy()\t\tFAIL\r\n");
             result = DET_FAILURE;
         }
     }
@@ -928,11 +956,11 @@ void det_test_1(void)
     {
         if (deque_1.count == 0)
         {
-            UART_1_PutString("  52\tde_destroy()\t\tPASS\r\n");
+            UART_1_PutString("  54\tde_destroy()\t\tPASS\r\n");
         }
         else
         {
-            UART_1_PutString("  52\tde_destroy()\t\tFAIL\r\n");
+            UART_1_PutString("  54\tde_destroy()\t\tFAIL\r\n");
             result = DET_FAILURE;
         }
     }
