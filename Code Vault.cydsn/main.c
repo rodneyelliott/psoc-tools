@@ -42,8 +42,9 @@
 #include "cllist_test.h"
 #include "deque_test.h"
 #include "dllist_test.h"
-#include "queue_test.h"
 #include "main.h"
+#include "misc_test.h"
+#include "queue_test.h"
 
 /****************************************************************************
  *  Definitions and Macros
@@ -81,7 +82,8 @@ void main()
     //det_test_1();
     //qut_test_1();
     //clt_test_1();
-    cbt_test_1();
+    //cbt_test_1();
+    mit_test_1();
     
     for (;;)
     {
