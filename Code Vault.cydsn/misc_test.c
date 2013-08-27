@@ -87,6 +87,9 @@ void mit_test_1(void)
     UART_1_PutString("Test\tFunction\t\tResult\r\n");
     UART_1_PutString("----\t--------\t\t------\r\n");
     
+    /*
+     *  Test mi_utoa();
+     */
     if (result == MIT_SUCCESS)
     {    
         if (mi_utoa(0, NULL) == MI_BAD_ARGUMENT)

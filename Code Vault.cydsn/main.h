@@ -57,7 +57,12 @@
  *  development kit fitted with a PSoC5 CY8C5568AXI-060 module. It requires
  *  access to the following components:
  *
+ *  - RTC_1
  *  - UART_1
+ *
+ *  The PSoC5 module must be fitted with a 32.768kHz crystal, and the 'XTAL
+ *  32kHz' source must be enabled in the clock section of the project design
+ *  wide resource (*.cydwr) file.
  *
  *  Pin P1_2 on the development kit prototype area must be connected to the
  *  UART RX pin, and pin P1_7 must be connected to the UART TX pin. Ensure

@@ -45,6 +45,7 @@
 #include "main.h"
 #include "misc_test.h"
 #include "queue_test.h"
+#include "rtime_test.h"
 
 /****************************************************************************
  *  Definitions and Macros
@@ -83,7 +84,8 @@ void main()
     //qut_test_1();
     //clt_test_1();
     //cbt_test_1();
-    mit_test_1();
+    //mit_test_1();
+    rtt_test_1();
     
     for (;;)
     {
