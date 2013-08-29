@@ -111,7 +111,7 @@ void det_test_1(void)
     DET_OBJECT *object_2;
     DET_OBJECT *object_3;
     DET_OBJECT *object_4;
-    uint8 result;
+    uint8 result = DET_SUCCESS;
     uint16 tag_0;
 
     UART_1_Start();
@@ -125,26 +125,30 @@ void det_test_1(void)
     /*
      *  Initialise de_add_first() test.
      */
-    if (_create_object("one", 1, &object_1) == DET_SUCCESS)
+    if (result == DET_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = DET_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = DET_FAILURE;
+        if (_create_object("one", 1, &object_1) == DET_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = DET_FAILURE;
+        }
     }
     
-    if (_create_object("two", 2, &object_2) == DET_SUCCESS)
+    if (result == DET_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = DET_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = DET_FAILURE;
+        if (_create_object("two", 2, &object_2) == DET_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = DET_FAILURE;
+        }
     }
     
     /*
@@ -248,26 +252,30 @@ void det_test_1(void)
     /*
      *  Initialise de_add_last() test.
      */
-    if (_create_object("three", 3, &object_3) == DET_SUCCESS)
+    if (result == DET_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = DET_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = DET_FAILURE;
+        if (_create_object("three", 3, &object_3) == DET_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = DET_FAILURE;
+        }
     }
     
-    if (_create_object("four", 4, &object_4) == DET_SUCCESS)
+    if (result == DET_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = DET_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = DET_FAILURE;
+        if (_create_object("four", 4, &object_4) == DET_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = DET_FAILURE;
+        }
     }
     
     /*
@@ -557,48 +565,56 @@ void det_test_1(void)
     /*
      *  Initialise de_get_first_object() test.
      */
-    if (de_add_first(&deque_1, _TAG, object_1) == DE_SUCCESS)
+    if (result == DET_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = DET_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = DET_FAILURE;
-    }
-    
-    if (de_add_first(&deque_1, _TAG, object_2) == DE_SUCCESS)
-    {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = DET_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = DET_FAILURE;
+        if (de_add_first(&deque_1, _TAG, object_1) == DE_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = DET_FAILURE;
+        }
     }
     
-    if (de_add_first(&deque_1, _TAG, object_3) == DE_SUCCESS)
+    if (result == DET_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = DET_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = DET_FAILURE;
+        if (de_add_first(&deque_1, _TAG, object_2) == DE_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = DET_FAILURE;
+        }
     }
     
-    if (de_add_first(&deque_1, _TAG, object_4) == DE_SUCCESS)
+    if (result == DET_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = DET_SUCCESS;
+        if (de_add_first(&deque_1, _TAG, object_3) == DE_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = DET_FAILURE;
+        }
     }
-    else
+    
+    if (result == DET_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = DET_FAILURE;
+        if (de_add_first(&deque_1, _TAG, object_4) == DE_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = DET_FAILURE;
+        }
     }
     
     /*
