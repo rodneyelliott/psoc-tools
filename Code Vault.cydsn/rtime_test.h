@@ -56,18 +56,25 @@
  *  Test    Function                Result
  *  ----    --------                ------
  *     1    rt_set_date()           PASS
+ *     -    Initialise test...      PASS
  *     2    rt_set_date()           PASS
  *     3    rt_set_date()           PASS
  *     4    rt_set_date()           PASS
  *     5    rt_set_date()           PASS
+ *     -    Initialise test...      PASS
  *     6    rt_set_time()           PASS
+ *     -    Initialise test...      PASS
  *     7    rt_set_time()           PASS
  *     8    rt_set_time()           PASS
  *     9    rt_set_time()           PASS
  *    10    rt_set_time()           PASS
+ *     -    Initialise test...      PASS
  *    11    rt_write()              PASS
+ *     -    Initialise test...      PASS
  *    12    rt_write()              PASS
+ *     -    Initialise test...      PASS
  *    13    rt_read()               PASS
+ *     -    Initialise test...      PASS
  *    14    rt_read()               PASS
  *    15    rt_read()               PASS
  *    16    rt_read()               PASS
@@ -86,7 +93,6 @@
  *     -    Initialise test...      PASS
  *    22    rt_convert()            PASS
  *    23    rt_convert()            PASS
- *     -    Initialise test...      PASS
  *     -    Initialise test...      PASS
  *     -    Initialise test...      PASS
  *     -    Initialise test...      PASS

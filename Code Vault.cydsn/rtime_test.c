@@ -104,10 +104,27 @@ void rtt_test_1(void)
         }
     }
     
+    /*
+     *  Initialise rt_set_date() test.
+     */
     if (result == RTT_SUCCESS)
     {
-        rt_start();
-        
+        if (rt_start() == RT_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = RTT_FAILURE;
+        }
+    }
+    
+    /*
+     *  Test rt_set_date().
+     */
+    if (result == RTT_SUCCESS)
+    {   
         if (rt_set_date(27, 8, 0) == RT_BAD_ARGUMENT)
         {
             UART_1_PutString("   2\trt_set_date()\t\tPASS\r\n");
@@ -159,12 +176,26 @@ void rtt_test_1(void)
     }
     
     /*
-     *  Test rt_set_time().
+     *  Initialise rt_set_time() test.
      */
     if (result == RTT_SUCCESS)
     {
-        rt_stop();
-        
+        if (rt_stop() == RT_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = RTT_FAILURE;
+        }
+    }
+    
+    /*
+     *  Test rt_set_time().
+     */
+    if (result == RTT_SUCCESS)
+    {   
         if (rt_set_time(8, 24, 44) == RT_FAILURE)
         {
             UART_1_PutString("   6\trt_set_time()\t\tPASS\r\n");
@@ -176,10 +207,27 @@ void rtt_test_1(void)
         }
     }
     
+    /*
+     *  Initialise rt_set_time() test.
+     */
     if (result == RTT_SUCCESS)
     {
-        rt_start();
-        
+        if (rt_start() == RT_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = RTT_FAILURE;
+        }
+    }
+    
+    /*
+     *  Test rt_set_time().
+     */
+    if (result == RTT_SUCCESS)
+    {        
         if (rt_set_time(8, 24, 255) == RT_BAD_ARGUMENT)
         {
             UART_1_PutString("   7\trt_set_time()\t\tPASS\r\n");
@@ -229,14 +277,28 @@ void rtt_test_1(void)
             result = RTT_FAILURE;
         }
     }
-        
+    
+    /*
+     *  Initialise rt_write() test.
+     */
+    if (result == RTT_SUCCESS)
+    {
+        if (rt_stop() == RT_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = RTT_FAILURE;
+        }
+    }
+    
     /*
      *  Test rt_write().
      */
     if (result == RTT_SUCCESS)
-    {
-        rt_stop();
-        
+    {   
         if (rt_write() == RT_FAILURE)
         {
             UART_1_PutString("  11\trt_write()\t\tPASS\r\n");
@@ -248,10 +310,27 @@ void rtt_test_1(void)
         }
     }
     
+    /*
+     *  Initialise rt_write() test.
+     */
     if (result == RTT_SUCCESS)
     {
-        rt_start();
-        
+        if (rt_start() == RT_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = RTT_FAILURE;
+        }
+    }
+    
+    /*
+     *  Test rt_write().
+     */
+    if (result == RTT_SUCCESS)
+    {   
         if (rt_write() == RT_SUCCESS)
         {
             UART_1_PutString("  12\trt_write()\t\tPASS\r\n");
@@ -264,12 +343,26 @@ void rtt_test_1(void)
     }
     
     /*
-     *  Test rt_read().
+     *  Initialise rt_read() test.
      */
     if (result == RTT_SUCCESS)
     {
-        rt_stop();
-        
+        if (rt_stop() == RT_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = RTT_FAILURE;
+        }
+    }
+    
+    /*
+     *  Test rt_read().
+     */
+    if (result == RTT_SUCCESS)
+    {   
         if (rt_read(&data_0) == RT_FAILURE)
         {
             UART_1_PutString("  13\trt_read()\t\tPASS\r\n");
@@ -281,10 +374,27 @@ void rtt_test_1(void)
         }
     }
     
+    /*
+     *  Initialise rt_read() test.
+     */
     if (result == RTT_SUCCESS)
     {
-        rt_start();
-        
+        if (rt_start() == RT_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = RTT_FAILURE;
+        }
+    }
+    
+    /*
+     *  Test rt_read().
+     */
+    if (result == RTT_SUCCESS)
+    {        
         if (rt_read(NULL) == RT_BAD_ARGUMENT)
         {
             UART_1_PutString("  14\trt_read()\t\tPASS\r\n");
@@ -367,62 +477,72 @@ void rtt_test_1(void)
     /*
      *  Initialise rt_convert() test.
      */
-    if (rt_set_date(1, 2, 2013) == RT_SUCCESS)
+    if (result == RTT_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = RTT_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = RTT_FAILURE;
-    }
-    
-    if (rt_set_time(3, 4, 5) == RT_SUCCESS)
-    {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = RTT_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = RTT_FAILURE;
+        if (rt_set_date(1, 2, 2013) == RT_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = RTT_FAILURE;
+        }
     }
     
-    if (rt_write() == RT_SUCCESS)
+    if (result == RTT_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = RTT_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = RTT_FAILURE;
+        if (rt_set_time(3, 4, 5) == RT_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = RTT_FAILURE;
+        }
     }
     
-    if (rt_read(&data_0) == RT_SUCCESS)
+    if (result == RTT_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = RTT_SUCCESS;
+        if (rt_write() == RT_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = RTT_FAILURE;
+        }
     }
-    else
+    
+    if (result == RTT_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = RTT_FAILURE;
+        if (rt_read(&data_0) == RT_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = RTT_FAILURE;
+        }
     }
     
     /*
      *  Test rt_convert().
      */
-    if (rt_convert(&data_0, string) == RT_SUCCESS)
+    if (result == RTT_SUCCESS)
     {
-        UART_1_PutString("  20\trt_convert()\t\tPASS\r\n");
-        result = RTT_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("  20\trt_convert()\t\tFAIL\r\n");
-        result = RTT_FAILURE;
+        if (rt_convert(&data_0, string) == RT_SUCCESS)
+        {
+            UART_1_PutString("  20\trt_convert()\t\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("  20\trt_convert()\t\tFAIL\r\n");
+            result = RTT_FAILURE;
+        }
     }
         
     if (result == RTT_SUCCESS)
@@ -441,62 +561,72 @@ void rtt_test_1(void)
     /*
      *  Initialise rt_convert() test.
      */
-    if (rt_set_date(11, 12, 2013) == RT_SUCCESS)
+    if (result == RTT_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = RTT_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = RTT_FAILURE;
-    }
-    
-    if (rt_set_time(12, 13, 14) == RT_SUCCESS)
-    {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = RTT_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = RTT_FAILURE;
+        if (rt_set_date(11, 12, 2013) == RT_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = RTT_FAILURE;
+        }
     }
     
-    if (rt_write() == RT_SUCCESS)
+    if (result == RTT_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = RTT_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = RTT_FAILURE;
+        if (rt_set_time(12, 13, 14) == RT_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = RTT_FAILURE;
+        }
     }
     
-    if (rt_read(&data_0) == RT_SUCCESS)
+    if (result == RTT_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = RTT_SUCCESS;
+        if (rt_write() == RT_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = RTT_FAILURE;
+        }
     }
-    else
+    
+    if (result == RTT_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = RTT_FAILURE;
+        if (rt_read(&data_0) == RT_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = RTT_FAILURE;
+        }
     }
     
     /*
      *  Test rt_convert().
      */
-    if (rt_convert(&data_0, string) == RT_SUCCESS)
+    if (result == RTT_SUCCESS)
     {
-        UART_1_PutString("  22\trt_convert()\t\tPASS\r\n");
-        result = RTT_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("  22\trt_convert()\t\tPASS\r\n");
-        result = RTT_FAILURE;
+        if (rt_convert(&data_0, string) == RT_SUCCESS)
+        {
+            UART_1_PutString("  22\trt_convert()\t\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("  22\trt_convert()\t\tPASS\r\n");
+            result = RTT_FAILURE;
+        }
     }
         
     if (result == RTT_SUCCESS)
@@ -515,68 +645,63 @@ void rtt_test_1(void)
     /*
      *  Initialise rt_convert() test.
      */
-    if (rt_set_date(11, 12, 2013) == RT_SUCCESS)
+    if (result == RTT_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = RTT_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = RTT_FAILURE;
-    }
-    
-    if (rt_set_time(0, 0, 0) == RT_SUCCESS)
-    {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = RTT_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = RTT_FAILURE;
+        if (rt_set_time(0, 0, 0) == RT_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = RTT_FAILURE;
+        }
     }
     
-    if (rt_write() == RT_SUCCESS)
+    if (result == RTT_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = RTT_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = RTT_FAILURE;
+        if (rt_write() == RT_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = RTT_FAILURE;
+        }
     }
     
-    if (rt_read(&data_0) == RT_SUCCESS)
+    if (result == RTT_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = RTT_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = RTT_FAILURE;
+        if (rt_read(&data_0) == RT_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = RTT_FAILURE;
+        }
     }
     
     /*
      *  Test rt_convert().
      */
-    if (rt_convert(&data_0, string) == RT_SUCCESS)
+    if (result == RTT_SUCCESS)
     {
-        UART_1_PutString("  24\trt_convert()\t\tPASS\r\n");
-        result = RTT_SUCCESS;
+        if (rt_convert(&data_0, string) == RT_SUCCESS)
+        {
+            UART_1_PutString("  24\trt_convert()\t\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("  24\trt_convert()\t\tPASS\r\n");
+            result = RTT_FAILURE;
+        }
     }
-    else
-    {
-        UART_1_PutString("  24\trt_convert()\t\tPASS\r\n");
-        result = RTT_FAILURE;
-    }
-        
+    
     if (result == RTT_SUCCESS)
     {   
-        rt_stop();
-        
         if (strcmp(string, "11/12/2013 00:00:00") == 0)
         {
             UART_1_PutString("  25\trt_convert()\t\tPASS\r\n");
@@ -588,6 +713,11 @@ void rtt_test_1(void)
         }
     }
     
+    /*
+     *  Clean-up test.
+     */
+    rt_stop();
+     
     /*
      *  Report test result.
      */
