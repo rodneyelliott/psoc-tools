@@ -123,7 +123,7 @@ void dlt_test_1(void)
     DLT_OBJECT *object_7;
     DLT_OBJECT *object_8;
     DLT_OBJECT *object_9;
-    uint8 result;
+    uint8 result = DLT_SUCCESS;
     uint16 tag_0;
     
     UART_1_Start();
@@ -137,15 +137,17 @@ void dlt_test_1(void)
     /*
      *  Initialise dl_create() test.
      */
-    if (_create_object("one", 1, &object_1) == DLT_SUCCESS)
+    if (result == DLT_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = DLT_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = DLT_FAILURE;
+        if (_create_object("one", 1, &object_1) == DLT_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = DLT_FAILURE;
+        }
     }
     
     /*
