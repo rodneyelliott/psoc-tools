@@ -111,7 +111,7 @@ void cbt_test_1(void)
     CBT_OBJECT *object_2;
     CBT_OBJECT *object_3;
     CBT_OBJECT *object_4;
-    uint8 result;
+    uint8 result = CBT_SUCCESS;
     uint16 tag_0;
 
     UART_1_Start();
@@ -125,37 +125,43 @@ void cbt_test_1(void)
     /*
      *  Initialise cb_add_new() test.
      */
-    if (_create_object("one", 1, &object_1) == CBT_SUCCESS)
+    if (result == CBT_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = CBT_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = CBT_FAILURE;
-    }
-    
-    if (_create_object("two", 2, &object_2) == CBT_SUCCESS)
-    {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = CBT_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = CBT_FAILURE;
+        if (_create_object("one", 1, &object_1) == CBT_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = CBT_FAILURE;
+        }
     }
     
-    if (_create_object("three", 3, &object_3) == CBT_SUCCESS)
+    if (result == CBT_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = CBT_SUCCESS;
+        if (_create_object("two", 2, &object_2) == CBT_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = CBT_FAILURE;
+        }
     }
-    else
+    
+    if (result == CBT_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = CBT_FAILURE;
+        if (_create_object("three", 3, &object_3) == CBT_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = CBT_FAILURE;
+        }
     }
     
     /*
@@ -340,15 +346,17 @@ void cbt_test_1(void)
     /*
      *  Initialise cb_get_old_object() test.
      */
-    if (_create_object("four", 4, &object_4) == CBT_SUCCESS)
+     if (result == CBT_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = CBT_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = CBT_FAILURE;
+        if (_create_object("four", 4, &object_4) == CBT_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = CBT_FAILURE;
+        }
     }
     
     if (result == CBT_SUCCESS)
