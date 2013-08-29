@@ -111,7 +111,7 @@ void qut_test_1(void)
     QUT_OBJECT *object_2;
     QUT_OBJECT *object_3;
     QUT_OBJECT *object_4;
-    uint8 result;
+    uint8 result = QUT_SUCCESS;
     uint16 tag_0;
 
     UART_1_Start();
@@ -125,26 +125,30 @@ void qut_test_1(void)
     /*
      *  Initialise qu_add_last() test.
      */
-    if (_create_object("three", 3, &object_3) == QUT_SUCCESS)
+    if (result == QUT_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = QUT_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = QUT_FAILURE;
+        if (_create_object("three", 3, &object_3) == QUT_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = QUT_FAILURE;
+        }
     }
     
-    if (_create_object("four", 4, &object_4) == QUT_SUCCESS)
+    if (result == QUT_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = QUT_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = QUT_FAILURE;
+        if (_create_object("four", 4, &object_4) == QUT_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = QUT_FAILURE;
+        }
     }
     
     /*
@@ -342,72 +346,84 @@ void qut_test_1(void)
     /*
      *  Initialise qu_get_first_object() test.
      */
-     queue_1.limit = 0;
-     
-    if (_create_object("one", 1, &object_1) == QUT_SUCCESS)
+    queue_1.limit = 0;
+    
+    if (result == QUT_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = QUT_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = QUT_FAILURE;
+        if (_create_object("one", 1, &object_1) == QUT_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = QUT_FAILURE;
+        }
     }
     
-    if (_create_object("two", 2, &object_2) == QUT_SUCCESS)
+    if (result == QUT_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = QUT_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = QUT_FAILURE;
-    }
-    
-    if (qu_add_last(&queue_1, _TAG, object_4) == QU_SUCCESS)
-    {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = QUT_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = QUT_FAILURE;
+        if (_create_object("two", 2, &object_2) == QUT_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = QUT_FAILURE;
+        }
     }
     
-    if (qu_add_last(&queue_1, _TAG, object_3) == QU_SUCCESS)
+    if (result == QUT_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = QUT_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = QUT_FAILURE;
-    }
-    
-    if (qu_add_last(&queue_1, _TAG, object_2) == QU_SUCCESS)
-    {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = QUT_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = QUT_FAILURE;
+        if (qu_add_last(&queue_1, _TAG, object_4) == QU_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = QUT_FAILURE;
+        }
     }
     
-    if (qu_add_last(&queue_1, _TAG, object_1) == QU_SUCCESS)
+    if (result == QUT_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = QUT_SUCCESS;
+        if (qu_add_last(&queue_1, _TAG, object_3) == QU_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = QUT_FAILURE;
+        }
     }
-    else
+    
+    if (result == QUT_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = QUT_FAILURE;
+        if (qu_add_last(&queue_1, _TAG, object_2) == QU_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = QUT_FAILURE;
+        }
+    }
+    
+    if (result == QUT_SUCCESS)
+    {
+        if (qu_add_last(&queue_1, _TAG, object_1) == QU_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = QUT_FAILURE;
+        }
     }
     
     /*
