@@ -112,7 +112,7 @@ void clt_test_1(void)
     CLT_OBJECT *object_2;
     CLT_OBJECT *object_3;
     CLT_OBJECT *object_4;
-    uint8 result;
+    uint8 result = CLT_SUCCESS;
     uint16 tag_0;
     
     UART_1_Start();
@@ -126,26 +126,30 @@ void clt_test_1(void)
     /*
      *  Initialise cl_add_after() test.
      */
-    if (_create_object("three", 3, &object_3) == CLT_SUCCESS)
+    if (result == CLT_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = CLT_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = CLT_FAILURE;
+        if (_create_object("three", 3, &object_3) == CLT_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = CLT_FAILURE;
+        }
     }
     
-    if (_create_object("four", 4, &object_4) == CLT_SUCCESS)
+    if (result == CLT_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = CLT_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = CLT_FAILURE;
+        if (_create_object("four", 4, &object_4) == CLT_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = CLT_FAILURE;
+        }
     }
     
     /*
@@ -232,26 +236,30 @@ void clt_test_1(void)
     /*
      *  Initialise cl_add_before() test.
      */
-    if (_create_object("one", 1, &object_1) == CLT_SUCCESS)
+    if (result == CLT_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = CLT_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = CLT_FAILURE;
+        if (_create_object("one", 1, &object_1) == CLT_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = CLT_FAILURE;
+        }
     }
     
-    if (_create_object("two", 2, &object_2) == CLT_SUCCESS)
+    if (result == CLT_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = CLT_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = CLT_FAILURE;
+        if (_create_object("two", 2, &object_2) == CLT_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = CLT_FAILURE;
+        }
     }
     
     /*
@@ -432,48 +440,56 @@ void clt_test_1(void)
     /*
      *  Initialise cl_move_forward() test.
      */
-    if (cl_add_after(&list_2, _TAG, object_1) == CL_SUCCESS)
+    if (result == CLT_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = CLT_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = CLT_FAILURE;
-    }
-    
-    if (cl_add_after(&list_2, _TAG, object_4) == CL_SUCCESS)
-    {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = CLT_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = CLT_FAILURE;
+        if (cl_add_after(&list_2, _TAG, object_1) == CL_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = CLT_FAILURE;
+        }
     }
     
-    if (cl_add_after(&list_2, _TAG, object_3) == CL_SUCCESS)
+    if (result == CLT_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = CLT_SUCCESS;
-    }
-    else
-    {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = CLT_FAILURE;
+        if (cl_add_after(&list_2, _TAG, object_4) == CL_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = CLT_FAILURE;
+        }
     }
     
-    if (cl_add_after(&list_2, _TAG, object_2) == CL_SUCCESS)
+    if (result == CLT_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
-        result = CLT_SUCCESS;
+        if (cl_add_after(&list_2, _TAG, object_3) == CL_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = CLT_FAILURE;
+        }
     }
-    else
+    
+    if (result == CLT_SUCCESS)
     {
-        UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
-        result = CLT_FAILURE;
+        if (cl_add_after(&list_2, _TAG, object_2) == CL_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = CLT_FAILURE;
+        }
     }
         
     /*
