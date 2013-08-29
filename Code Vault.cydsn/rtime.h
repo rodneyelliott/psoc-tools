@@ -179,6 +179,9 @@ uint8 rt_start(void);
  *  @brief Stop the RTC component used by the library.
  *  @return #RT_SUCCESS if successful, otherwise #RT_FAILURE.
  *  @remark This should be the last library function to be called.
+ *  @remark It is up to the caller to ensure that the RTC component
+ *      has been started prior to calling this function. Failure to
+ *      do so will result in this function returning #RT_FAILURE.
  */
 uint8 rt_stop(void);
 
@@ -187,6 +190,9 @@ uint8 rt_stop(void);
  *  @return #RT_SUCCESS if successful, otherwise #RT_FAILURE.
  *  @remark Writes values from the private RT_DATA structure
  *      to the RTC component.
+ *  @remark It is up to the caller to ensure that the RTC component
+ *      has been started prior to calling this function. Failure to
+ *      do so will result in this function returning #RT_FAILURE.
  */
 uint8 rt_write(void);
 
@@ -195,6 +201,9 @@ uint8 rt_write(void);
  *  @param[in] timestamp A pointer to the returned temporal values.
  *  @return #RT_SUCCESS if successful, otherwise #RT_BAD_ARGUMENT or
  *      #RT_FAILURE.
+ *  @remark It is up to the caller to ensure that the RTC component
+ *      has been started prior to calling this function. Failure to
+ *      do so will result in this function returning #RT_FAILURE.
  */
 uint8 rt_read(RT_DATA *timestamp);
 
@@ -206,6 +215,9 @@ uint8 rt_read(RT_DATA *timestamp);
  *  @return #RT_SUCCESS if successful, otherwise #RT_BAD_ARGUMENT or
  *      #RT_FAILURE.
  *  @remark Writes date values to the private RT_DATA structure.
+ *  @remark It is up to the caller to ensure that the RTC component
+ *      has been started prior to calling this function. Failure to
+ *      do so will result in this function returning #RT_FAILURE.
  */
 uint8 rt_set_date(uint8 day, uint8 month, uint16 year);
 
@@ -217,6 +229,9 @@ uint8 rt_set_date(uint8 day, uint8 month, uint16 year);
  *  @return #RT_SUCCESS if successful, otherwise #RT_BAD_ARGUMENT or
  *      #RT_FAILURE.
  *  @remark Writes time values to the private RT_DATA structure.
+ *  @remark It is up to the caller to ensure that the RTC component
+ *      has been started prior to calling this function. Failure to
+ *      do so will result in this function returning #RT_FAILURE.
  */
 uint8 rt_set_time(uint8 hour, uint8 minute, uint8 second);
 
