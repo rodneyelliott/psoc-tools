@@ -383,6 +383,8 @@ uint8 dl_extract(DL_LIST *node);
  *  @brief Delete a DLL node.
  *  @param[in] node A pointer to a DLL node.
  *  @return #DL_SUCCESS if successful, otherwise #DL_BAD_ARGUMENT.
+ *  @remark This function deletes the node, but does not delete the
+ *      object that it points to.
  *  @warning If the node pointer is the only means of addressing a DLL,
  *      the DLL will be lost.
  *  @warning It is up to the caller to ensure that the node argument
@@ -429,7 +431,7 @@ uint8 dl_exchange(DL_LIST *node_a, DL_LIST *node_b);
 
 /**
  *  @brief Update a DLL node's object.
- *  @param[in] node A pointer to a pointer to the DLL node to update.
+ *  @param[out] node A pointer to a pointer to the DLL node to update.
  *  @param[in] new_tag A tag used to identify the node's new object type.
  *  @param[in] new_object A pointer to the node's new object.
  *  @return #DL_SUCCESS if successful, otherwise #DL_BAD_ARGUMENT or

@@ -89,9 +89,7 @@ uint8 dl_create(DL_LIST **node, uint16 tag, void *object)
             result = DL_SUCCESS;
         }
         else
-        {
-            *node = NULL;
-            
+        {   
             result = DL_NO_MEMORY;
         }
     }
@@ -375,7 +373,7 @@ uint8 dl_delete(DL_LIST *node)
 
 uint8 dl_destroy(DL_LIST **list)
 {
-    DL_LIST *marker;
+    DL_LIST *this_node;
     DL_LIST *next_node;    
     DL_LIST *previous_node;
     uint8 result = DL_BAD_ARGUMENT;
@@ -388,18 +386,18 @@ uint8 dl_destroy(DL_LIST **list)
             
             while (previous_node != NULL)
             {
-                marker = previous_node->previous;
+                this_node = previous_node->previous;
                 dl_delete(previous_node);
-                previous_node = marker;
+                previous_node = this_node;
             }
 
             next_node = *list;
             
             do
             {
-                marker = next_node->next;
+                this_node = next_node->next;
                 dl_delete(next_node);
-                next_node = marker;
+                next_node = this_node;
             } while (next_node != NULL);
             
             *list = NULL;
@@ -432,10 +430,10 @@ uint8 dl_join(DL_LIST *list_a, DL_LIST *list_b)
 uint8 dl_exchange(DL_LIST *node_a, DL_LIST *node_b)
 {
     uint8 result = DL_BAD_ARGUMENT;
-    DL_LIST *t_0;
-    DL_LIST *t_1;
-    DL_LIST *t_2;
-    DL_LIST *t_3;
+    DL_LIST *node_0;
+    DL_LIST *node_1;
+    DL_LIST *node_2;
+    DL_LIST *node_3;
 
     if (node_a != NULL && node_b != NULL)
     {
@@ -451,30 +449,30 @@ uint8 dl_exchange(DL_LIST *node_a, DL_LIST *node_b)
         }
         else
         {
-            t_0 = node_a->previous;
-            t_1 = node_a->next;
-            t_2 = node_b->previous;
-            t_3 = node_b->next;
+            node_0 = node_a->previous;
+            node_1 = node_a->next;
+            node_2 = node_b->previous;
+            node_3 = node_b->next;
 
             dl_extract(node_a);
             dl_extract(node_b);
 
-            if (t_2 != NULL)
+            if (node_2 != NULL)
             {
-                dl_insert_after(t_2, node_a);
+                dl_insert_after(node_2, node_a);
             }
             else
             {
-                dl_insert_before(t_3, node_a);
+                dl_insert_before(node_3, node_a);
             }
 
-            if (t_0 != NULL)
+            if (node_0 != NULL)
             {
-                dl_insert_after(t_0, node_b);
+                dl_insert_after(node_0, node_b);
             }
             else
             {
-                dl_insert_before(t_1, node_b);
+                dl_insert_before(node_1, node_b);
             }
         }
         
