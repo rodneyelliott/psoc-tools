@@ -198,13 +198,13 @@ typedef struct DL_LIST
  ****************************************************************************/
 /**
  *  @brief Create a new DLL node.
+ *  @param[out] node A pointer to a pointer to the newly created node.
  *  @param[in] tag A tag used to identify the new node's object type.
  *  @param[in] object A pointer to the new node's object.
- *  @param[out] node A pointer to a pointer to the newly created node.
  *  @return #DL_SUCCESS if successful, otherwise #DL_BAD_ARGUMENT or
  *      #DL_NO_MEMORY.
  */
-uint8 dl_create(uint16 tag, void *object, DL_LIST **node);
+uint8 dl_create(DL_LIST **node, uint16 tag, void *object);
 
 /**
  *  @brief Insert a node into a DLL before another node.

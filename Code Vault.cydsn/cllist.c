@@ -75,7 +75,7 @@ uint8 cl_add_after(CL_LIST *list, uint16 tag, void *object)
     
     if (list != NULL)
     {
-        result = dl_create(tag, object, &new_node);
+        result = dl_create(&new_node, tag, object);
         
         if (result == DL_SUCCESS)
         {
@@ -107,7 +107,7 @@ uint8 cl_add_before(CL_LIST *list, uint16 tag, void *object)
     
     if (list != NULL)
     {
-        result = dl_create(tag, object, &new_node);
+        result = dl_create(&new_node, tag, object);
         
         if (result == DL_SUCCESS)
         {

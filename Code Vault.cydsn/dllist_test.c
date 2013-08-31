@@ -155,7 +155,7 @@ void dlt_test_1(void)
      */
     if (result == DLT_SUCCESS)
     {
-        if (dl_create(_TAG, NULL, NULL) == DL_BAD_ARGUMENT)
+        if (dl_create(NULL, _TAG, NULL) == DL_BAD_ARGUMENT)
         {
             UART_1_PutString("   1\tdl_create()\t\tPASS\r\n");
         }
@@ -165,10 +165,10 @@ void dlt_test_1(void)
             result = DLT_FAILURE;
         }
     }    
-        
+    
     if (result == DLT_SUCCESS)
-    {    
-        if (dl_create(_TAG, NULL, &node_1) == DL_BAD_ARGUMENT)
+    {
+        if (dl_create(NULL, _TAG, object_1) == DL_BAD_ARGUMENT)
         {
             UART_1_PutString("   2\tdl_create()\t\tPASS\r\n");
         }
@@ -180,8 +180,8 @@ void dlt_test_1(void)
     }
     
     if (result == DLT_SUCCESS)
-    {
-        if (dl_create(_TAG, object_1, NULL) == DL_BAD_ARGUMENT)
+    {    
+        if (dl_create(&node_1, _TAG, NULL) == DL_BAD_ARGUMENT)
         {
             UART_1_PutString("   3\tdl_create()\t\tPASS\r\n");
         }
@@ -194,7 +194,7 @@ void dlt_test_1(void)
     
     if (result == DLT_SUCCESS)
     {
-        if (dl_create(_TAG, object_1, &node_1) == DL_SUCCESS)
+        if (dl_create(&node_1, _TAG, object_1) == DL_SUCCESS)
         {
             UART_1_PutString("   4\tdl_create()\t\tPASS\r\n");
         }
@@ -236,7 +236,7 @@ void dlt_test_1(void)
     
     if (result == DLT_SUCCESS)
     {
-        if (dl_create(_TAG, object_2, &node_2) == DL_SUCCESS)
+        if (dl_create(&node_2, _TAG, object_2) == DL_SUCCESS)
         {
             UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
         }
@@ -249,7 +249,7 @@ void dlt_test_1(void)
     
     if (result == DLT_SUCCESS)
     {
-        if (dl_create(_TAG, object_3, &node_3) == DL_SUCCESS)
+        if (dl_create(&node_3, _TAG, object_3) == DL_SUCCESS)
         {
             UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
         }
@@ -359,7 +359,7 @@ void dlt_test_1(void)
     
     if (result == DLT_SUCCESS)
     {
-        if (dl_create(_TAG, object_4, &node_4) == DL_SUCCESS)
+        if (dl_create(&node_4, _TAG, object_4) == DL_SUCCESS)
         {
             UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
         }
@@ -372,7 +372,7 @@ void dlt_test_1(void)
     
     if (result == DLT_SUCCESS)
     {
-        if (dl_create(_TAG, object_5, &node_5) == DL_SUCCESS)
+        if (dl_create(&node_5, _TAG, object_5) == DL_SUCCESS)
         {
             UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
         }

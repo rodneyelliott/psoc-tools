@@ -68,7 +68,7 @@
 /****************************************************************************
  *  Exported Functions
  ****************************************************************************/
-uint8 dl_create(uint16 tag, void *object, DL_LIST **node)
+uint8 dl_create(DL_LIST **node, uint16 tag, void *object)
 {
     DL_LIST *new_node;
     uint8 result = DL_BAD_ARGUMENT;
@@ -164,7 +164,7 @@ uint8 dl_add_first(DL_LIST **list, uint16 tag, void *object)
  
     if (list != NULL)
     {
-        result = dl_create(tag, object, &new_node);
+        result = dl_create(&new_node, tag, object);
         
         if (result == DL_SUCCESS)
         {
@@ -204,7 +204,7 @@ uint8 dl_add_last(DL_LIST **list, uint16 tag, void *object)
 
     if (list != NULL)
     {
-        result = dl_create(tag, object, &new_node);
+        result = dl_create(&new_node, tag, object);
         
         if (result == DL_SUCCESS)
         {
@@ -240,7 +240,7 @@ uint8 dl_add_before(DL_LIST **node, uint16 tag, void *object)
     
     if (node != NULL)
     {
-        result = dl_create(tag, object, &new_node);
+        result = dl_create(&new_node, tag, object);
         
         if (result == DL_SUCCESS)
         {
@@ -275,7 +275,7 @@ uint8 dl_add_after(DL_LIST **node, uint16 tag, void *object)
     
     if (node != NULL)
     {
-        result = dl_create(tag, object, &new_node);
+        result = dl_create(&new_node, tag, object);
         
         if (result == DL_SUCCESS)
         {
@@ -491,7 +491,7 @@ uint8 dl_update(DL_LIST **node, uint16 new_tag, void *new_object)
     
     if (node != NULL)
     {
-        result = dl_create(new_tag, new_object, &new_node);
+        result = dl_create(&new_node, new_tag, new_object);
         
         if (result == DL_SUCCESS)
         {
