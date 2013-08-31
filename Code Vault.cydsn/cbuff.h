@@ -50,11 +50,11 @@
  *
  *  A typical library circular buffer consists of one or more @em nodes, with
  *  each node containing a pointer to a single @em object. By abstracting the
- *  structure of the deque away from its content, the library is able to
- *  provide a single set of functions that are able to manipulate @em all
- *  circular buffers, regardless of their content. This includes heterogeneous
- *  circular buffers in which the type of object stored within the circular
- *  buffer varies from node to node.
+ *  structure of the circular buffer away from its content, the library is
+ *  able to provide a single set of functions that are able to manipulate
+ *  @em all circular buffers, regardless of their content. This includes
+ *  heterogeneous circular buffers in which the type of object stored within
+ *  the circular buffer varies from node to node.
  *
  *  <H3> Use </H3>
  *
@@ -128,12 +128,12 @@
 typedef struct CB_LIST
 {
     /**
-     *  @brief A pointer to a circular list.
+     *  @brief A pointer to a CLL.
      */
     CL_LIST *list;
     
     /**
-     *  @brief The maximum number of nodes allowed in the circular list.
+     *  @brief The maximum number of nodes allowed in the CLL.
      */
     uint32 limit;
 } CB_LIST;
