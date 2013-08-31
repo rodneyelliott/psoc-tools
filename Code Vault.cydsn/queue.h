@@ -152,7 +152,7 @@ typedef struct QU_LIST
  *  Exported Functions
  ****************************************************************************/
 /**
- *  @brief Add a node to a queue in last place.
+ *  @brief Add a new node to a queue in last place.
  *  @param[in] queue A pointer to a queue.
  *  @param[in] tag A tag used to identify the new node's object type.
  *  @param[in] object A pointer to the new node's object.
