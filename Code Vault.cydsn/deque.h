@@ -153,7 +153,7 @@ typedef struct DE_LIST
  *  Exported Functions
  ****************************************************************************/
 /**
- *  @brief Add a node to a deque in first place.
+ *  @brief Add a new node to a deque in first place.
  *  @param[in] deque A pointer to a deque.
  *  @param[in] tag A tag used to identify the new node's object type.
  *  @param[in] object A pointer to the new node's object.
@@ -166,7 +166,7 @@ typedef struct DE_LIST
 uint8 de_add_first(DE_LIST *deque, uint16 tag, void *object);
 
 /**
- *  @brief Add a node to a deque in last place.
+ *  @brief Add a new node to a deque in last place.
  *  @param[in] deque A pointer to a deque.
  *  @param[in] tag A tag used to identify the new node's object type.
  *  @param[in] object A pointer to the new node's object.
