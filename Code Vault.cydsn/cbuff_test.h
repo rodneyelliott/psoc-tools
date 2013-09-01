@@ -41,8 +41,8 @@
  *
  *  This function, cbt_test_1(), provides complete coverage of the circular
  *  buffer library codebase, with one exception. Those circular buffer library
- *  functions that call dl_create() have not had their #CB_NO_MEMORY return
- *  value tested.
+ *  functions that call malloc(), either directly or indirectly, have not had
+ *  their #CB_NO_MEMORY return value tested.
  *
  *  <H3> Use </H3>
  *
