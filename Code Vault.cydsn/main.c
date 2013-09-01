@@ -42,6 +42,7 @@
 #include "cllist_test.h"
 #include "deque_test.h"
 #include "dllist_test.h"
+#include "error_test.h"
 #include "main.h"
 #include "misc_test.h"
 #include "queue_test.h"
@@ -85,7 +86,8 @@ void main()
     //clt_test_1();
     //cbt_test_1();
     //mit_test_1();
-    rtt_test_1();
+    //rtt_test_1();
+    ert_test_1();
     
     for (;;)
     {
