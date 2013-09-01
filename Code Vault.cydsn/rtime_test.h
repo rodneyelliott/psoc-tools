@@ -41,7 +41,8 @@
  *
  *  This function, rtt_test_1(), provides complete coverage of the RTC library
  *  codebase, with one exception. Those RTC library functions that call
- *  dl_create() have not had their #RT_NO_MEMORY return value tested.
+ *  malloc(), either directly or indirectly, have not had their #RT_NO_MEMORY
+ *  return value tested.
  *
  *  <H3> Use </H3>
  *

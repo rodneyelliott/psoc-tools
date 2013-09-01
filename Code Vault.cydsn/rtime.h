@@ -238,7 +238,7 @@ uint8 rt_set_time(uint8 hour, uint8 minute, uint8 second);
 /**
  *  @brief Convert temporal values to an ASCII string.
  *  @param[in] timestamp A pointer to the temporal values to convert.
- *  @param[in] string A pointer to the returned string.
+ *  @param[out] string A pointer to the returned string.
  *  @return #RT_SUCCESS if successful, otherwise #RT_BAD_ARGUMENT.
  *  @remark String format is 'DD/MM/YYY HH:MM:SS' where 'DD' is the
  *      day value et cetera.
