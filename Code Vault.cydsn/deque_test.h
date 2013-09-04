@@ -121,6 +121,9 @@
  *  TEST PASSED
  *  @endcode
  *
+ *  Alternatively, if no serial terminal is available, the det_test_1() return
+ *  value may be checked to see if the test completed successfully or not.
+ *
  *  <H3> Hardware </H3>
  *
  *  The deque test library has been designed to run on a Cypress CY8CKIT-001
@@ -192,8 +195,9 @@ typedef struct DET_OBJECT
  ****************************************************************************/
 /**
  *  @brief Tests the functions of the deque library.
+ *  @return #DET_SUCCESS if successful, otherwise #DET_FAILURE.
  */
-void det_test_1(void);
+uint8 det_test_1(void);
 
 #endif
 

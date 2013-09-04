@@ -102,7 +102,7 @@ static uint8 _walk_deque(DE_LIST *deque);
 /****************************************************************************
  *  Exported Functions
  ****************************************************************************/
-void det_test_1(void)
+uint8 det_test_1(void)
 {
     DE_LIST deque_1 = {0};
     DE_LIST deque_2 = {0};
@@ -1002,6 +1002,15 @@ void det_test_1(void)
     _destroy_object(object_2);
     _destroy_object(object_3);
     _destroy_object(object_4);
+    
+    while (UART_1_ReadTxStatus() != UART_1_TX_STS_FIFO_EMPTY)
+    {
+        CyDelay(1);
+    }
+    
+    UART_1_Stop();
+    
+    return result;
 }
 
 /****************************************************************************
