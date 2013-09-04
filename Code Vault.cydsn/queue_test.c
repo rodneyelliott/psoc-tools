@@ -102,7 +102,7 @@ static uint8 _walk_queue(QU_LIST *queue);
 /****************************************************************************
  *  Exported Functions
  ****************************************************************************/
-void qut_test_1(void)
+uint8 qut_test_1(void)
 {
     QU_LIST queue_1 = {0};
     QU_LIST queue_2 = {0};
@@ -700,6 +700,15 @@ void qut_test_1(void)
     _destroy_object(object_2);
     _destroy_object(object_3);
     _destroy_object(object_4);
+    
+    while (UART_1_ReadTxStatus() != UART_1_TX_STS_FIFO_EMPTY)
+    {
+        CyDelay(1);
+    }
+    
+    UART_1_Stop();
+    
+    return result;
 }
 
 /****************************************************************************
