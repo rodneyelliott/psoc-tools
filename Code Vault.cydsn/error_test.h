@@ -166,6 +166,9 @@
  *  TEST PASSED
  *  @endcode
  *
+ *  Alternatively, if no serial terminal is available, the ert_test_1() return
+ *  value may be checked to see if the test completed successfully or not.
+ *
  *  <H3> Hardware </H3>
  *
  *  The error management test library has been designed to run on a Cypress
@@ -227,8 +230,9 @@
  ****************************************************************************/
 /**
  *  @brief Tests the functions of the error management library.
+ *  @return #ERT_SUCCESS if successful, otherwise #ERT_FAILURE.
  */
-void ert_test_1(void);
+uint8 ert_test_1(void);
 
 #endif
 

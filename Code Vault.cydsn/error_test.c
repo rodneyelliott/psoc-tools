@@ -74,7 +74,7 @@
 /****************************************************************************
  *  Exported Functions
  ****************************************************************************/
-void ert_test_1(void)
+uint8 ert_test_1(void)
 {
     DE_LIST deque_1 = {0};
     DE_LIST deque_2 = {0};
@@ -1654,6 +1654,18 @@ void ert_test_1(void)
         UART_1_PutString("\r\n");
         UART_1_PutString("TEST FAILED\r\n");
     }
+    
+    /*
+     *  Clean-up test.
+     */
+    while (UART_1_ReadTxStatus() != UART_1_TX_STS_FIFO_EMPTY)
+    {
+        CyDelay(1);
+    }
+    
+    UART_1_Stop();
+    
+    return result;
 }
 
 /****************************************************************************
