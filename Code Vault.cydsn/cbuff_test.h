@@ -108,6 +108,9 @@
  *  TEST PASSED
  *  @endcode
  *
+ *  Alternatively, if no serial terminal is available, the cbt_test_1() return
+ *  value may be checked to see if the test completed successfully or not.
+ *
  *  <H3> Hardware </H3>
  *
  *  The circular buffer test library has been designed to run on a Cypress
@@ -179,8 +182,9 @@ typedef struct CBT_OBJECT
  ****************************************************************************/
 /**
  *  @brief Tests the functions of the circular buffer library.
+ *  @return #CBT_SUCCESS if successful, otherwise #CBT_FAILURE.
  */
-void cbt_test_1(void);
+uint8 cbt_test_1(void);
 
 #endif
 

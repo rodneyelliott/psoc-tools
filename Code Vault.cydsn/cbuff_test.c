@@ -102,7 +102,7 @@ static uint8 _walk_buffer(CB_LIST *buffer);
 /****************************************************************************
  *  Exported Functions
  ****************************************************************************/
-void cbt_test_1(void)
+uint8 cbt_test_1(void)
 {
     CB_LIST buffer_1 = {0};
     CB_LIST buffer_2 = {0};
@@ -809,6 +809,15 @@ void cbt_test_1(void)
      */
     _destroy_object(object_1);
     _destroy_object(object_2);
+    
+    while (UART_1_ReadTxStatus() != UART_1_TX_STS_FIFO_EMPTY)
+    {
+        CyDelay(1);
+    }
+    
+    UART_1_Stop();
+    
+    return result;
 }
 
 /****************************************************************************
