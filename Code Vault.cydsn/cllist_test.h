@@ -110,6 +110,9 @@
  *  TEST PASSED
  *  @endcode
  *
+ *  Alternatively, if no serial terminal is available, the clt_test_1() return
+ *  value may be checked to see if the test completed successfully or not.
+ *
  *  <H3> Hardware </H3>
  *
  *  The CLL test library has been designed to run on a Cypress CY8CKIT-001
@@ -181,8 +184,9 @@ typedef struct CLT_OBJECT
  ****************************************************************************/
 /**
  *  @brief Tests the functions of the CLL library.
+ *  @return #CLT_SUCCESS if successful, otherwise #CLT_FAILURE.
  */
-void clt_test_1(void);
+uint8 clt_test_1(void);
 
 #endif
 

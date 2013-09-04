@@ -102,7 +102,7 @@ static uint8 _walk_list(CL_LIST *list);
 /****************************************************************************
  *  Exported Functions
  ****************************************************************************/
-void clt_test_1(void)
+uint8 clt_test_1(void)
 {
     CL_LIST list_1 = {0};
     CL_LIST list_2 = {0};
@@ -835,6 +835,15 @@ void clt_test_1(void)
     _destroy_object(object_2);
     _destroy_object(object_3);
     _destroy_object(object_4);
+    
+    while (UART_1_ReadTxStatus() != UART_1_TX_STS_FIFO_EMPTY)
+    {
+        CyDelay(1);
+    }
+    
+    UART_1_Stop();
+    
+    return result;
 }
 
 /****************************************************************************
