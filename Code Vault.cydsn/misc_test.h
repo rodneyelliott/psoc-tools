@@ -64,6 +64,9 @@
  *  TEST PASSED
  *  @endcode
  *
+ *  Alternatively, if no serial terminal is available, the mit_test_1() return
+ *  value may be checked to see if the test completed successfully or not.
+ *
  *  <H3> Hardware </H3>
  *
  *  The miscellaneous function test library has been designed to run on a
@@ -120,8 +123,9 @@
  ****************************************************************************/
 /**
  *  @brief Tests the functions of the miscellaneous function library.
+ *  @return #MIT_SUCCESS if successful, otherwise #MIT_FAILURE.
  */
-void mit_test_1(void);
+uint8 mit_test_1(void);
 
 #endif
 

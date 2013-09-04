@@ -74,7 +74,7 @@
 /****************************************************************************
  *  Exported Functions
  ****************************************************************************/
-void mit_test_1(void)
+uint8 mit_test_1(void)
 {
     uint8 result = MIT_SUCCESS;
     char string[11] = {0};
@@ -204,6 +204,14 @@ void mit_test_1(void)
     /*
      *  Clean-up test.
      */
+    while (UART_1_ReadTxStatus() != UART_1_TX_STS_FIFO_EMPTY)
+    {
+        CyDelay(1);
+    }
+    
+    UART_1_Stop();
+    
+    return result;
 }
 
 /****************************************************************************
