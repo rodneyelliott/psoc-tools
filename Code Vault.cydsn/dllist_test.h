@@ -160,6 +160,9 @@
  *  TEST PASSED
  *  @endcode
  *
+ *  Alternatively, if no serial terminal is available, the dlt_test_1() return
+ *  value may be checked to see if the test completed successfully or not.
+ *
  *  <H3> Hardware </H3>
  *
  *  The DLL test library has been designed to run on a Cypress CY8CKIT-001
@@ -231,8 +234,9 @@ typedef struct DLT_OBJECT
  ****************************************************************************/
 /**
  *  @brief Tests the functions of the DLL library.
+ *  @return #DLT_SUCCESS if successful, otherwise #DLT_FAILURE.
  */
-void dlt_test_1(void);
+uint8 dlt_test_1(void);
 
 #endif
 

@@ -102,7 +102,7 @@ static uint8 _walk_list(DL_LIST *list);
 /****************************************************************************
  *  Exported Functions
  ****************************************************************************/
-void dlt_test_1(void)
+uint8 dlt_test_1(void)
 {
     DL_LIST *list_1 = NULL;
     DL_LIST *list_2 = NULL;
@@ -1419,6 +1419,14 @@ void dlt_test_1(void)
     dl_delete(node_4);
     dl_destroy(&list_1);
     
+    while (UART_1_ReadTxStatus() != UART_1_TX_STS_FIFO_EMPTY)
+    {
+        CyDelay(1);
+    }
+    
+    UART_1_Stop();
+    
+    return result;
 }
 
 /****************************************************************************
