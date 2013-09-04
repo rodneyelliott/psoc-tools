@@ -74,7 +74,7 @@
 /****************************************************************************
  *  Exported Functions
  ****************************************************************************/
-void rtt_test_1(void)
+uint8 rtt_test_1(void)
 {
     RT_DATA data_0;
     uint8 result = RTT_SUCCESS;
@@ -712,11 +712,6 @@ void rtt_test_1(void)
             result = RTT_FAILURE;
         }
     }
-    
-    /*
-     *  Clean-up test.
-     */
-    rt_stop();
      
     /*
      *  Report test result.
@@ -731,6 +726,19 @@ void rtt_test_1(void)
         UART_1_PutString("\r\n");
         UART_1_PutString("TEST FAILED\r\n");
     }
+    
+    /*
+     *  Clean-up test.
+     */
+    while (UART_1_ReadTxStatus() != UART_1_TX_STS_FIFO_EMPTY)
+    {
+        CyDelay(1);
+    }
+    
+    UART_1_Stop();
+    rt_stop();
+    
+    return result;
 }
 
 /****************************************************************************

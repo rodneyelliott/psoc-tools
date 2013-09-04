@@ -103,6 +103,9 @@
  *  TEST PASSED
  *  @endcode
  *
+ *  Alternatively, if no serial terminal is available, the rtt_test_1() return
+ *  value may be checked to see if the test completed successfully or not.
+ *
  *  <H3> Hardware </H3>
  *
  *  The RTC test library has been designed to run on a Cypress CY8CKIT-001
@@ -164,8 +167,9 @@
  ****************************************************************************/
 /**
  *  @brief Tests the functions of the RTC library.
+ *  @return #RTT_SUCCESS if successful, otherwise #RTT_FAILURE.
  */
-void rtt_test_1(void);
+uint8 rtt_test_1(void);
 
 #endif
 
