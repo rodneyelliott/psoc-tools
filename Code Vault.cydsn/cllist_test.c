@@ -72,24 +72,21 @@
  *  @param[in] string A pointer to an ASCII string.
  *  @param[in] number The object identification number.
  *  @param[out] object A pointer to a pointer to the newly created object.
- *  @return #CLT_SUCCESS if successful, otherwise #CLT_BAD_ARGUMENT or
- *      #CLT_NO_MEMORY.
+ *  @return #CLT_SUCCESS if successful, otherwise #CLT_NO_MEMORY.
  */
 static uint8 _create_object(char *string, uint8 number, CLT_OBJECT **object);
 
 /**
  *  @brief Destroy a test object.
  *  @param[in] object A pointer to a test object.
- *  @return #CLT_SUCCESS if successful, otherwise #CLT_BAD_ARGUMENT.
  */
-static uint8 _destroy_object(CLT_OBJECT *object);
+static void _destroy_object(CLT_OBJECT *object);
 
 /**
  *  @brief Walk a CLL, displaying test object ASCII strings.
  *  @param[in] list A pointer to a CLL.
- *  @return #CLT_SUCCESS if successful, otherwise #CLT_BAD_ARGUMENT.
  */
-static uint8 _walk_list(CL_LIST *list);
+static void _walk_list(CL_LIST *list);
 
 /****************************************************************************
  *  Exported Variables
@@ -852,83 +849,55 @@ uint8 clt_test_1(void)
 uint8 _create_object(char *string, uint8 number, CLT_OBJECT **object)
 {
     CLT_OBJECT *new_object;
-    uint8 result = CLT_BAD_ARGUMENT;
+    uint8 result = CLT_NO_MEMORY;
     char *new_string;
     
-    if (object != NULL)
-    {
-        new_object = malloc(sizeof(*new_object));
+    new_object = malloc(sizeof(*new_object));
         
-        if (new_object != NULL)
+    if (new_object != NULL)
+    {
+        new_object->number = number;
+        
+        new_string = malloc(strlen(string) + 1);
+        
+        if (new_string != NULL)
         {
-            new_object->number = number;
+            strcpy(new_string, string);
+            new_object->string = new_string;
             
-            new_string = malloc(strlen(string) + 1);
+            *object = new_object;
             
-            if (new_string != NULL)
-            {
-                strcpy(new_string, string);
-                new_object->string = new_string;
-                
-                *object = new_object;
-                
-                result = CLT_SUCCESS;
-            }
-            else
-            {
-                free(new_object);
-                
-                *object = NULL;
-                
-                result = CLT_NO_MEMORY;
-            }
+            result = CLT_SUCCESS;
         }
         else
         {
-            result = CLT_NO_MEMORY;
+            free(new_object);
         }
     }
     
     return result;
 }
 
-uint8 _destroy_object(CLT_OBJECT *object)
+void _destroy_object(CLT_OBJECT *object)
 {
-    uint8 result = CLT_BAD_ARGUMENT;
-    
-    if (object != NULL)
-    {
-        free(object->string);
-        free(object);
-        
-        result = CLT_SUCCESS;
-    }
-    
-    return result;
+    free(object->string);
+    free(object);
 }
 
-uint8 _walk_list(CL_LIST *list)
+void _walk_list(CL_LIST *list)
 {
     uint32 count;
     CLT_OBJECT *object;
-    uint8 result = CLT_BAD_ARGUMENT;
     
-    if (list != NULL)
+    for (count = 0 ; count < list->count ; count++)
     {
-        for (count = 0 ; count < list->count ; count++)
-        {
-            object = (CLT_OBJECT *)list->list->object;
-            
-            UART_1_PutString(object->string);
-            UART_1_PutString("\r\n");
-            
-            cl_move_forward(list, 1);
-        }
-    
-        result = CLT_SUCCESS;
+        object = (CLT_OBJECT *)list->list->object;
+        
+        UART_1_PutString(object->string);
+        UART_1_PutString("\r\n");
+        
+        cl_move_forward(list, 1);
     }
-    
-    return result;
 }
 
 /****************************************************************************
