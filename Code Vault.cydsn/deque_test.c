@@ -72,24 +72,21 @@
  *  @param[in] string A pointer to an ASCII string.
  *  @param[in] number The object identification number.
  *  @param[out] object A pointer to a pointer to the newly created object.
- *  @return #DET_SUCCESS if successful, otherwise #DET_BAD_ARGUMENT or
- *      #DET_NO_MEMORY.
+ *  @return #DET_SUCCESS if successful, otherwise #DET_NO_MEMORY.
  */
 static uint8 _create_object(char *string, uint8 number, DET_OBJECT **object);
 
 /**
  *  @brief Destroy a test object.
  *  @param[in] object A pointer to a test object.
- *  @return #DET_SUCCESS if successful, otherwise #DET_BAD_ARGUMENT.
  */
-static uint8 _destroy_object(DET_OBJECT *object);
+static void _destroy_object(DET_OBJECT *object);
 
 /**
  *  @brief Walk a deque, displaying test object ASCII strings.
  *  @param[in] deque A pointer to a deque.
- *  @return #DET_SUCCESS if successful, otherwise #DET_BAD_ARGUMENT.
  */
-static uint8 _walk_deque(DE_LIST *deque);
+static void _walk_deque(DE_LIST *deque);
 
 /****************************************************************************
  *  Exported Variables
@@ -1019,83 +1016,54 @@ uint8 det_test_1(void)
 uint8 _create_object(char *string, uint8 number, DET_OBJECT **object)
 {
     DET_OBJECT *new_object;
-    uint8 result = DET_BAD_ARGUMENT;
+    uint8 result = DET_NO_MEMORY;
     char *new_string;
     
-    if (object != NULL)
-    {
-        new_object = malloc(sizeof(*new_object));
+    new_object = malloc(sizeof(*new_object));
         
-        if (new_object != NULL)
+    if (new_object != NULL)
+    {
+        new_object->number = number;
+        
+        new_string = malloc(strlen(string) + 1);
+        
+        if (new_string != NULL)
         {
-            new_object->number = number;
+            strcpy(new_string, string);
+            new_object->string = new_string;
             
-            new_string = malloc(strlen(string) + 1);
+            *object = new_object;
             
-            if (new_string != NULL)
-            {
-                strcpy(new_string, string);
-                new_object->string = new_string;
-                
-                *object = new_object;
-                
-                result = DET_SUCCESS;
-            }
-            else
-            {
-                free(new_object);
-                
-                *object = NULL;
-                
-                result = DET_NO_MEMORY;
-            }
+            result = DET_SUCCESS;
         }
         else
         {
-            result = DET_NO_MEMORY;
+            free(new_object);
         }
     }
     
     return result;
 }
 
-uint8 _destroy_object(DET_OBJECT *object)
+void _destroy_object(DET_OBJECT *object)
 {
-    uint8 result = DET_BAD_ARGUMENT;
-    
-    if (object != NULL)
-    {
-        free(object->string);
-        free(object);
-        
-        result = DET_SUCCESS;
-    }
-    
-    return result;
+    free(object->string);
+    free(object);
 }
 
-uint8 _walk_deque(DE_LIST *deque)
+void _walk_deque(DE_LIST *deque)
 {
     DL_LIST *node;
     DET_OBJECT *object;
-    uint8 result = DET_BAD_ARGUMENT;
     
-    if (deque != NULL)
+    for (node = dl_get_first(deque->list) ; node != NULL ; node = node->next)
     {
-        for (node = dl_get_first(deque->list) ;
-            node != NULL ; node = node->next)
-        {
-            object = node->object;
-            
-            UART_1_PutString(object->string);
-            UART_1_PutString("\r\n");
-            
-        }
+        object = node->object;
         
-        result = DET_SUCCESS;
+        UART_1_PutString(object->string);
+        UART_1_PutString("\r\n");
+        
     }
-    
-    return result;
 }
 
 /****************************************************************************
