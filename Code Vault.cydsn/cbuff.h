@@ -223,7 +223,11 @@ uint32 cb_get_limit(CB_LIST *buffer);
  *  @param[in] buffer A pointer to a circular buffer.
  *  @param[in] limit The maximum number of nodes allowed in the circular
  *      buffer.
- *  @return #CB_SUCCESS if successful, otherwise #CB_BAD_ARGUMENT.
+ *  @return #CB_SUCCESS if successful, otherwise #CB_BAD_ARGUMENT or
+ *      #CB_FAILURE.
+ *  @remark It is up to the caller to ensure that the number of nodes in the
+ *      circular buffer is less than the proposed limit. Failure to do so will
+ *      result in this function returning #CB_FAILURE.
  *  @remark Set the limit to zero to allow the circular buffer to grow without
  *      limit.
  */

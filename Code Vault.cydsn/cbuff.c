@@ -214,9 +214,16 @@ uint8 cb_set_limit(CB_LIST *buffer, uint32 limit)
     
     if (buffer != NULL)
     {
-        buffer->limit = limit;
-        
-        result = CB_SUCCESS;
+        if ((buffer->list->count > limit) && (limit != 0))
+        {
+            result = CB_FAILURE;
+        }
+        else
+        {
+            buffer->limit = limit;
+            
+            result = CB_SUCCESS;
+        }
     }
     
     return result;
