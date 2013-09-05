@@ -81,7 +81,7 @@ static uint8 _create_timestamp(RT_DATA **timestamp);
 static uint8 _create_location(ER_LOCATION **location, char *file, int line);
 
 /**
- *  @brief Add a standard error object to a deque.
+ *  @brief Add a new standard error object to a deque.
  *  @param[in] deque A pointer to a deque.
  *  @param[in] number The standard error number.
  *  @param[in] options The selected error options.
@@ -109,7 +109,7 @@ uint8 _add_standard(DE_LIST *deque, uint32 number, uint8 options,
     char *file, int line);
 
 /**
- *  @brief Add a special error object to a deque.
+ *  @brief Add a new special error object to a deque.
  *  @param[in] deque A pointer to a deque.
  *  @param[in] message A pointer to the special message.
  *  @param[in] options The selected error options.

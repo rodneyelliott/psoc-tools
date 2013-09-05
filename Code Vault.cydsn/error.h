@@ -74,6 +74,9 @@
  *
  *  @code DE_LIST de_list = {0}; @endcode
  *
+ *  The library requires exclusive access to this instance. The programmer
+ *  must not attempt to use the declared structure for any other purpose.
+ *
  *  With the instance declared, nodes may be added to the empty deque using
  *  the library functions er_add_standard() and er_add_special(). Nodes may
  *  be removed from the deque using the function er_remove().
@@ -181,7 +184,7 @@
 
 #ifdef DOXYGEN
 /**
- *  @brief Add a standard error object to a deque.
+ *  @brief Add a new standard error object to a deque.
  *  @param[in] deque A pointer to a deque.
  *  @param[in] number The standard error number.
  *  @param[in] options The selected error options.
@@ -210,7 +213,7 @@ NUMBER, OPTIONS, __FILE__, __LINE__)
 
 #ifdef DOXYGEN
 /**
- *  @brief Add a special error object to a deque.
+ *  @brief Add a new special error object to a deque.
  *  @param[in] deque A pointer to a deque.
  *  @param[in] message A pointer to the special message.
  *  @param[in] options The selected error options.
