@@ -396,6 +396,27 @@ uint8 er_remove(DE_LIST *deque);
 uint32 er_get_count(DE_LIST *deque);
 
 /**
+ *  @brief Get the node limit of a deque.
+ *  @param[in] deque A pointer to a deque.
+ *  @return The maximum number of nodes allowed in the deque.
+ *  @remark If the deque argument is NULL, a limit of zero will be returned.
+ */
+uint32 er_get_limit(DE_LIST *deque);
+
+/**
+ *  @brief Set the node limit of a deque.
+ *  @param[in] deque A pointer to a deque.
+ *  @param[in] limit The maximum number of nodes allowed in the deque.
+ *  @return #ER_SUCCESS if successful, otherwise #ER_BAD_ARGUMENT or
+ *      #ER_FAILURE.
+ *  @remark It is up to the caller to ensure that the number of nodes in the
+ *      deque is less than the proposed limit. Failure to do so will result
+ *      in this function returning #ER_FAILURE.
+ *  @remark Set the limit to zero to allow the deque to grow without limit.
+ */
+uint8 er_set_limit(DE_LIST *deque, uint32 limit);
+
+/**
  *  @brief Get the error object timestamp information.
  *  @param[in] object A pointer to an error object.
  *  @param[out] timestamp A pointer to a pointer to the returned timestamp.

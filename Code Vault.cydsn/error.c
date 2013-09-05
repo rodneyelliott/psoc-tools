@@ -244,6 +244,16 @@ uint32 er_get_count(DE_LIST *deque)
     return de_get_count(deque);
 }
 
+uint32 er_get_limit(DE_LIST *deque)
+{
+    return de_get_limit(deque);
+}
+
+uint8 er_set_limit(DE_LIST *deque, uint32 limit)
+{
+    return de_set_limit(deque, limit);
+}
+
 uint8 er_get_timestamp(ER_OBJECT *object, RT_DATA **timestamp)
 {
     uint8 result = ER_BAD_ARGUMENT;

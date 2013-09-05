@@ -1613,17 +1613,75 @@ uint8 ert_test_1(void)
     }
     
     /*
+     *  Test er_get_limit().
+     */
+    if (result == ERT_SUCCESS)
+    {
+        if (er_get_limit(NULL) == 0)
+        {
+            UART_1_PutString("  87\ter_get_limit()\t\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("  87\ter_get_limit()\t\tFAIL\r\n");
+            result = ERT_FAILURE;
+        }
+    }
+    
+    if (result == ERT_SUCCESS)
+    {
+        if (er_get_limit(&deque_1) == 8)
+        {
+            UART_1_PutString("  88\ter_get_limit()\t\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("  88\ter_get_limit()\t\tFAIL\r\n");
+            result = ERT_FAILURE;
+        }
+    }
+
+    /*
+     *  Test er_set_limit().
+     */
+    if (result == ERT_SUCCESS)
+    {
+        if (er_set_limit(&deque_1, 2) == ER_FAILURE)
+        {
+            UART_1_PutString("  89\ter_set_limit()\t\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("  89\ter_set_limit()\t\tFAIL\r\n");
+            result = ERT_FAILURE;
+        }
+    }
+    
+    if (result == ERT_SUCCESS)
+    {
+        if (er_set_limit(&deque_1, 0) == ER_SUCCESS)
+        {
+            UART_1_PutString("  90\ter_set_limit()\t\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("  90\ter_set_limit()\t\tFAIL\r\n");
+            result = ERT_FAILURE;
+        }
+    }
+    
+    /*
      *  Test er_destroy().
      */
     if (result == ERT_SUCCESS)
     {
         if (er_destroy(NULL) == ER_BAD_ARGUMENT)
         {
-            UART_1_PutString("  87\ter_destroy()\t\tPASS\r\n");
+            UART_1_PutString("  91\ter_destroy()\t\tPASS\r\n");
         }
         else
         {
-            UART_1_PutString("  87\ter_destroy()\t\tFAIL\r\n");
+            UART_1_PutString("  91\ter_destroy()\t\tFAIL\r\n");
             result = ERT_FAILURE;
         }
     }
@@ -1632,11 +1690,11 @@ uint8 ert_test_1(void)
     {
         if (er_destroy(&deque_1) == ER_SUCCESS)
         {
-            UART_1_PutString("  88\ter_destroy()\t\tPASS\r\n");
+            UART_1_PutString("  92\ter_destroy()\t\tPASS\r\n");
         }
         else
         {
-            UART_1_PutString("  88\ter_destroy()\t\tFAIL\r\n");
+            UART_1_PutString("  92\ter_destroy()\t\tFAIL\r\n");
             result = ERT_FAILURE;
         }
     }

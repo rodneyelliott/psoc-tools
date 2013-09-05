@@ -160,8 +160,12 @@
  *    84    er_convert_location()   PASS
  *    85    er_convert_location()   PASS
  *    86    er_convert_location()   PASS
- *    87    er_destroy()            PASS
- *    88    er_destroy()            PASS
+ *    87    er_get_limit()          PASS
+ *    88    er_get_limit()          PASS
+ *    89    er_set_limit()          PASS
+ *    90    er_set_limit()          PASS
+ *    91    er_destroy()            PASS
+ *    92    er_destroy()            PASS
  *
  *  TEST PASSED
  *  @endcode
