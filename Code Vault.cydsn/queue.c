@@ -178,9 +178,16 @@ uint8 qu_set_limit(QU_LIST *queue, uint32 limit)
     
     if (queue != NULL)
     {
-        queue->limit = limit;
-        
-        result = QU_SUCCESS;
+        if ((queue->count > limit) && (limit != 0))
+        {
+            result = QU_FAILURE;
+        }
+        else
+        {
+            queue->limit = limit;
+            
+            result = QU_SUCCESS;
+        }
     }
     
     return result;

@@ -52,7 +52,7 @@
  *
  *  @code
  *  QUEUE LIBRARY TEST
- *
+ *  
  *  Test    Function                Result
  *  ----    --------                ------
  *     -    Initialise test...      PASS
@@ -92,10 +92,12 @@
  *    27    qu_set_limit()          PASS
  *    28    qu_set_limit()          PASS
  *    29    qu_set_limit()          PASS
- *    30    qu_destroy()            PASS
- *    31    qu_destroy()            PASS
+ *    30    qu_set_limit()          PASS
+ *    31    qu_set_limit()          PASS
  *    32    qu_destroy()            PASS
- *
+ *    33    qu_destroy()            PASS
+ *    34    qu_destroy()            PASS
+ *  
  *  TEST PASSED
  *  @endcode
  *

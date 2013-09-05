@@ -215,7 +215,11 @@ uint32 qu_get_limit(QU_LIST *queue);
  *  @brief Set the node limit of a queue.
  *  @param[in] queue A pointer to a queue.
  *  @param[in] limit The maximum number of nodes allowed in the queue.
- *  @return #QU_SUCCESS if successful, otherwise #QU_BAD_ARGUMENT.
+ *  @return #QU_SUCCESS if successful, otherwise #QU_BAD_ARGUMENT or
+ *      #QU_FAILURE.
+ *  @remark It is up to the caller to ensure that the number of nodes in the
+ *      queue is less than the proposed limit. Failure to do so will result
+ *      in this function returning #QU_FAILURE.
  *  @remark Set the limit to zero to allow the queue to grow without limit.
  */
 uint8 qu_set_limit(QU_LIST *queue, uint32 limit);
