@@ -52,7 +52,7 @@
  *
  *  @code
  *  DEQUE LIBRARY TEST
- *
+ *  
  *  Test    Function                Result
  *  ----    --------                ------
  *     -    Initialise test...      PASS
@@ -114,10 +114,12 @@
  *    49    de_set_limit()          PASS
  *    50    de_set_limit()          PASS
  *    51    de_set_limit()          PASS
- *    52    de_destroy()            PASS
- *    53    de_destroy()            PASS
+ *    52    de_set_limit()          PASS
+ *    53    de_set_limit()          PASS
  *    54    de_destroy()            PASS
- *
+ *    55    de_destroy()            PASS
+ *    56    de_destroy()            PASS
+ *  
  *  TEST PASSED
  *  @endcode
  *

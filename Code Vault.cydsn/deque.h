@@ -260,7 +260,11 @@ uint32 de_get_limit(DE_LIST *deque);
  *  @brief Set the node limit of a deque.
  *  @param[in] deque A pointer to a deque.
  *  @param[in] limit The maximum number of nodes allowed in the deque.
- *  @return #DE_SUCCESS if successful, otherwise #DE_BAD_ARGUMENT.
+ *  @return #DE_SUCCESS if successful, otherwise #DE_BAD_ARGUMENT or
+ *      #DE_FAILURE.
+ *  @remark It is up to the caller to ensure that the number of nodes in the
+ *      deque is less than the proposed limit. Failure to do so will result
+ *      in this function returning #DE_FAILURE.
  *  @remark Set the limit to zero to allow the deque to grow without limit.
  */
 uint8 de_set_limit(DE_LIST *deque, uint32 limit);

@@ -262,9 +262,16 @@ uint8 de_set_limit(DE_LIST *deque, uint32 limit)
     
     if (deque != NULL)
     {
-        deque->limit = limit;
+        if ((deque->count > limit) && (limit != 0))
+        {
+            result = DE_FAILURE;
+        }
+        else
+        {
+            deque->limit = limit;
         
-        result = DE_SUCCESS;
+            result = DE_SUCCESS;
+        }
     }
     
     return result;
