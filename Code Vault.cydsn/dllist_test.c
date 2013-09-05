@@ -72,24 +72,21 @@
  *  @param[in] string A pointer to an ASCII string.
  *  @param[in] number The object identification number.
  *  @param[out] object A pointer to a pointer to the newly created object.
- *  @return #DLT_SUCCESS if successful, otherwise #DLT_BAD_ARGUMENT or
- *      #DLT_NO_MEMORY.
+ *  @return #DLT_SUCCESS if successful, otherwise #DLT_NO_MEMORY.
  */
 static uint8 _create_object(char *string, uint8 number, DLT_OBJECT **object);
 
 /**
  *  @brief Destroy a test object.
  *  @param[in] object A pointer to a test object.
- *  @return #DLT_SUCCESS if successful, otherwise #DLT_BAD_ARGUMENT.
  */
-static uint8 _destroy_object(DLT_OBJECT *object);
+static void _destroy_object(DLT_OBJECT *object);
 
 /**
  *  @brief Walk a DLL, displaying test object ASCII strings.
  *  @param[in] list A pointer to a DLL.
- *  @return #DLT_SUCCESS if successful, otherwise #DLT_BAD_ARGUMENT.
  */
-static uint8 _walk_list(DL_LIST *list);
+static void _walk_list(DL_LIST *list);
 
 /****************************************************************************
  *  Exported Variables
@@ -1435,81 +1432,53 @@ uint8 dlt_test_1(void)
 uint8 _create_object(char *string, uint8 number, DLT_OBJECT **object)
 {
     DLT_OBJECT *new_object;
-    uint8 result = DLT_BAD_ARGUMENT;
+    uint8 result = DLT_NO_MEMORY;
     char *new_string;
     
-    if (object != NULL)
-    {
-        new_object = malloc(sizeof(*new_object));
+    new_object = malloc(sizeof(*new_object));
         
-        if (new_object != NULL)
+    if (new_object != NULL)
+    {
+        new_object->number = number;
+        
+        new_string = malloc(strlen(string) + 1);
+        
+        if (new_string != NULL)
         {
-            new_object->number = number;
+            strcpy(new_string, string);
+            new_object->string = new_string;
             
-            new_string = malloc(strlen(string) + 1);
+            *object = new_object;
             
-            if (new_string != NULL)
-            {
-                strcpy(new_string, string);
-                new_object->string = new_string;
-                
-                *object = new_object;
-                
-                result = DLT_SUCCESS;
-            }
-            else
-            {
-                free(new_object);
-                
-                *object = NULL;
-                
-                result = DLT_NO_MEMORY;
-            }
+            result = DLT_SUCCESS;
         }
         else
         {
-            result = DLT_NO_MEMORY;
+            free(new_object);
         }
     }
     
     return result;
 }
 
-uint8 _destroy_object(DLT_OBJECT *object)
-{
-    uint8 result = DLT_BAD_ARGUMENT;
-    
-    if (object != NULL)
-    {
-        free(object->string);
-        free(object);
-        
-        result = DLT_SUCCESS;
-    }
-    
-    return result;
+void _destroy_object(DLT_OBJECT *object)
+{   
+    free(object->string);
+    free(object);
 }
 
-uint8 _walk_list(DL_LIST *list)
+void _walk_list(DL_LIST *list)
 {
     DL_LIST *node;
     DLT_OBJECT *object;
-    uint8 result = DLT_BAD_ARGUMENT;
-    
-    if (list != NULL)
+        
+    for (node = dl_get_first(list) ; node != NULL ; node = node->next)
     {
-        for (node = dl_get_first(list) ; node != NULL ; node = node->next)
-        {
-            object = (DLT_OBJECT *)node->object;
-            
-            UART_1_PutString(object->string);
-            UART_1_PutString("\r\n");
-        }
-    
-        result = DLT_SUCCESS;
+        object = (DLT_OBJECT *)node->object;
+        
+        UART_1_PutString(object->string);
+        UART_1_PutString("\r\n");
     }
-    
-    return result;
 }
 
 /****************************************************************************
