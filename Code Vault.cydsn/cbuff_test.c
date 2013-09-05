@@ -72,24 +72,21 @@
  *  @param[in] string A pointer to an ASCII string.
  *  @param[in] number The object identification number.
  *  @param[out] object A pointer to a pointer to the newly created object.
- *  @return #CBT_SUCCESS if successful, otherwise #CBT_BAD_ARGUMENT or
- *      #CBT_NO_MEMORY.
+ *  @return #CBT_SUCCESS if successful, otherwise #CBT_NO_MEMORY.
  */
 static uint8 _create_object(char *string, uint8 number, CBT_OBJECT **object);
 
 /**
  *  @brief Destroy a test object.
  *  @param[in] object A pointer to a test object.
- *  @return #CBT_SUCCESS if successful, otherwise #CBT_BAD_ARGUMENT.
  */
-static uint8 _destroy_object(CBT_OBJECT *object);
+static void _destroy_object(CBT_OBJECT *object);
 
 /**
  *  @brief Walk a circular buffer, displaying test object ASCII strings.
- *  @param[in] deque A pointer to a deque.
- *  @return #CBT_SUCCESS if successful, otherwise #CBT_BAD_ARGUMENT.
+ *  @param[in] buffer A pointer to a circular buffer.
  */
-static uint8 _walk_buffer(CB_LIST *buffer);
+static void _walk_buffer(CB_LIST *buffer);
 
 /****************************************************************************
  *  Exported Variables
@@ -826,83 +823,55 @@ uint8 cbt_test_1(void)
 uint8 _create_object(char *string, uint8 number, CBT_OBJECT **object)
 {
     CBT_OBJECT *new_object;
-    uint8 result = CBT_BAD_ARGUMENT;
+    uint8 result = CBT_NO_MEMORY;
     char *new_string;
     
-    if (object != NULL)
+    new_object = malloc(sizeof(*new_object));
+    
+    if (new_object != NULL)
     {
-        new_object = malloc(sizeof(*new_object));
+        new_object->number = number;
         
-        if (new_object != NULL)
+        new_string = malloc(strlen(string) + 1);
+        
+        if (new_string != NULL)
         {
-            new_object->number = number;
+            strcpy(new_string, string);
+            new_object->string = new_string;
             
-            new_string = malloc(strlen(string) + 1);
+            *object = new_object;
             
-            if (new_string != NULL)
-            {
-                strcpy(new_string, string);
-                new_object->string = new_string;
-                
-                *object = new_object;
-                
-                result = CBT_SUCCESS;
-            }
-            else
-            {
-                free(new_object);
-                
-                *object = NULL;
-                
-                result = CBT_NO_MEMORY;
-            }
+            result = CBT_SUCCESS;
         }
         else
         {
-            result = CBT_NO_MEMORY;
+            free(new_object);
         }
     }
     
     return result;
 }
 
-uint8 _destroy_object(CBT_OBJECT *object)
+void _destroy_object(CBT_OBJECT *object)
 {
-    uint8 result = CBT_BAD_ARGUMENT;
-    
-    if (object != NULL)
-    {
-        free(object->string);
-        free(object);
-        
-        result = CBT_SUCCESS;
-    }
-    
-    return result;
+    free(object->string);
+    free(object);
 }
 
-uint8 _walk_buffer(CB_LIST *buffer)
+void _walk_buffer(CB_LIST *buffer)
 {
     uint32 count;
     CBT_OBJECT *object;
-    uint8 result = CBT_BAD_ARGUMENT;
     
-    if (buffer != NULL)
+    for (count = 0 ; count < buffer->list->count ; count++)
     {
-        for (count = 0 ; count < buffer->list->count ; count++)
-        {
-            object = (CBT_OBJECT *)buffer->list->list->object;
-            
-            UART_1_PutString(object->string);
-            UART_1_PutString("\r\n");
-            
-            cl_move_forward(buffer->list, 1);
-        }
-    
-        result = CBT_SUCCESS;
+        object = (CBT_OBJECT *)buffer->list->list->object;
+        
+        UART_1_PutString(object->string);
+        UART_1_PutString("\r\n");
+        
+        cl_move_forward(buffer->list, 1);
     }
-    
-    return result;
 }
 
 /****************************************************************************
