@@ -72,24 +72,21 @@
  *  @param[in] string A pointer to an ASCII string.
  *  @param[in] number The object identification number.
  *  @param[out] object A pointer to a pointer to the newly created object.
- *  @return #QUT_SUCCESS if successful, otherwise #QUT_BAD_ARGUMENT or
- *      #QUT_NO_MEMORY.
+ *  @return #QUT_SUCCESS if successful, otherwise #QUT_NO_MEMORY.
  */
 static uint8 _create_object(char *string, uint8 number, QUT_OBJECT **object);
 
 /**
  *  @brief Destroy a test object.
  *  @param[in] object A pointer to a test object.
- *  @return #QUT_SUCCESS if successful, otherwise #QUT_BAD_ARGUMENT.
  */
-static uint8 _destroy_object(QUT_OBJECT *object);
+static void _destroy_object(QUT_OBJECT *object);
 
 /**
  *  @brief Walk a queue, displaying test object ASCII strings.
  *  @param[in] queue A pointer to a queue.
- *  @return #QUT_SUCCESS if successful, otherwise #QUT_BAD_ARGUMENT.
  */
-static uint8 _walk_queue(QU_LIST *queue);
+static void _walk_queue(QU_LIST *queue);
 
 /****************************************************************************
  *  Exported Variables
@@ -717,83 +714,55 @@ uint8 qut_test_1(void)
 uint8 _create_object(char *string, uint8 number, QUT_OBJECT **object)
 {
     QUT_OBJECT *new_object;
-    uint8 result = QUT_BAD_ARGUMENT;
+    uint8 result = QUT_NO_MEMORY;
     char *new_string;
     
-    if (object != NULL)
+    new_object = malloc(sizeof(*new_object));
+    
+    if (new_object != NULL)
     {
-        new_object = malloc(sizeof(*new_object));
+        new_object->number = number;
         
-        if (new_object != NULL)
+        new_string = malloc(strlen(string) + 1);
+        
+        if (new_string != NULL)
         {
-            new_object->number = number;
+            strcpy(new_string, string);
+            new_object->string = new_string;
             
-            new_string = malloc(strlen(string) + 1);
+            *object = new_object;
             
-            if (new_string != NULL)
-            {
-                strcpy(new_string, string);
-                new_object->string = new_string;
-                
-                *object = new_object;
-                
-                result = QUT_SUCCESS;
-            }
-            else
-            {
-                free(new_object);
-                
-                *object = NULL;
-                
-                result = QUT_NO_MEMORY;
-            }
+            result = QUT_SUCCESS;
         }
         else
         {
-            result = QUT_NO_MEMORY;
+            free(new_object);
         }
     }
-    
-    return result;
-}
-
-uint8 _destroy_object(QUT_OBJECT *object)
-{
-    uint8 result = QUT_BAD_ARGUMENT;
-    
-    if (object != NULL)
-    {
-        free(object->string);
-        free(object);
         
-        result = QUT_SUCCESS;
-    }
-    
     return result;
 }
 
-uint8 _walk_queue(QU_LIST *queue)
+void _destroy_object(QUT_OBJECT *object)
+{
+    free(object->string);
+    free(object);
+}
+
+void _walk_queue(QU_LIST *queue)
 {
     DL_LIST *node;
     QUT_OBJECT *object;
-    uint8 result = QUT_BAD_ARGUMENT;
     
-    if (queue != NULL)
+    for (node = dl_get_first(queue->list) ; node != NULL ; node = node->next)
     {
-        for (node = dl_get_first(queue->list) ;
-            node != NULL ; node = node->next)
-        {
-            object = node->object;
-            
-            UART_1_PutString(object->string);
-            UART_1_PutString("\r\n");
-            
-        }
+        object = node->object;
         
-        result = QUT_SUCCESS;
+        UART_1_PutString(object->string);
+        UART_1_PutString("\r\n");
+        
     }
     
-    return result;
 }
 
 /****************************************************************************
