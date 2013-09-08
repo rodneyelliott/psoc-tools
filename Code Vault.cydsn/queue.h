@@ -107,11 +107,11 @@
  *  Doubly linked list library (dllist.h)
  *
  *  <a href = "http://en.wikipedia.org/wiki/Queue_(abstract_data_type)">
- *      Queue (Wikipedia)</a>
+ *      Queue (Wikipedia) </a>
  *
  *  <a href = "http://www.amazon.com/
  *      C-Unleashed-Richard-Heathfield/dp/0672318962">
- *      C Unleashed (Amazon)</a>
+ *      C Unleashed (Amazon) </a>
  */
  
 /****************************************************************************

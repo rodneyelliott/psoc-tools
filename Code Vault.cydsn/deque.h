@@ -108,11 +108,11 @@
  *  Doubly linked list library (dllist.h)
  *
  *  <a href = "http://en.wikipedia.org/wiki/Double-ended_queue">
- *      Double-ended queue (Wikipedia)</a>
+ *      Double-ended queue (Wikipedia) </a>
  *
  *  <a href = "http://www.amazon.com/
  *      C-Unleashed-Richard-Heathfield/dp/0672318962">
- *      C Unleashed (Amazon)</a>
+ *      C Unleashed (Amazon) </a>
  */
  
 /****************************************************************************

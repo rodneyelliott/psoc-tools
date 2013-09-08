@@ -54,7 +54,22 @@
  *  able to provide a single set of functions that are able to manipulate
  *  @em all circular buffers, regardless of their content. This includes
  *  heterogeneous circular buffers in which the type of object stored within
- *  the circular buffer varies from node to node.
+ *  the circular buffer varies from node to node. In order to accomplish this
+ *  however, the structure of the nodes that comprise the circular buffer must
+ *  be made as generic as possible.
+ *
+ *  The nodes of a library circular buffer thus contain the following fields:
+ *
+ *  -# Tag. A tag used to identify this node's object type.
+ *  -# Previous. A pointer to the previous node in the circular buffer.
+ *  -# Next. A pointer to the next node in the circular buffer.
+ *  -# Object. A pointer to this node's object.
+ *
+ *  Note that each circular buffer node contains a pointer to an object,
+ *  rather than the object itself. Whilst the library is responsible for
+ *  managing the object pointer, it is up to the programmer to manage the
+ *  actual object. This includes everything from its creation, right though
+ *  to its eventual destruction.
  *
  *  <H3> Use </H3>
  *
@@ -76,11 +91,19 @@
  *  cb_destroy() deletes all nodes from a buffer.
  *
  *  For further information about these library functions, please refer to the
- *  individual function documentation.
+ *  individual function documentation. For examples of their use, please see
+ *  the circular buffer test library.
  *
  *  <H3> Hardware </H3>
  *
  *  The circular buffer library has no hardware requirements.
+ *
+ *  <H3> Further Reading </H3>
+ *
+ *  Circular linked list library (cllist.h)
+ *
+ *  <a href = "http://en.wikipedia.org/wiki/Circular_buffer">
+ *      Circular buffer (Wikipedia) </a>
  */
  
 /****************************************************************************

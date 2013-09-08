@@ -135,7 +135,7 @@
  *  <H3> Further Reading </H3>
  *
  *  <a href = "http://en.wikipedia.org/wiki/Linked_list#Circular_list">
- *      Circular list (Wikipedia)</a>
+ *      Circular list (Wikipedia) </a>
  *
  *  <a href = "http://www.amazon.com/
  *      C-Unleashed-Richard-Heathfield/dp/0672318962">

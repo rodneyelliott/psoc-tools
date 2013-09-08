@@ -146,11 +146,11 @@
  *  <H3> Further Reading </H3>
  *
  *  <a href = "http://en.wikipedia.org/wiki/Doubly_linked_list">
- *      Doubly linked list (Wikipedia)</a>
+ *      Doubly linked list (Wikipedia) </a>
  *
  *  <a href = "http://www.amazon.com/
  *      C-Unleashed-Richard-Heathfield/dp/0672318962">
- *      C Unleashed (Amazon)</a>
+ *      C Unleashed (Amazon) </a>
  */
 
 /****************************************************************************
