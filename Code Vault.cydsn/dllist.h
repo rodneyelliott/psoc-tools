@@ -50,8 +50,8 @@
  *  set of functions that are able to manipulate @em all DLLs, regardless of
  *  their content. This includes heterogeneous DLLs in which the type of
  *  object stored within the DLL varies from node to node. In order to
- *  accomplish this however, the structure of the nodes that comprise the
- *  DLL must be made as generic as possible.
+ *  accomplish this however, the structure of the nodes that comprise the DLL
+ *  must be made as generic as possible.
  *
  *  The nodes of a library DLL thus contain the following fields:
  *
@@ -60,18 +60,24 @@
  *  -# Next. A pointer to the next node in the DLL.
  *  -# Object. A pointer to this node's object.
  *
+ *  Note that each DLL node contains a pointer to an object, rather than the
+ *  object itself. Whilst the library is responsible for managing the object
+ *  pointer, it is up to the programmer to manage the actual object. This
+ *  includes everything from its creation, right though to its eventual
+ *  destruction.
+ *
  *  The library uses several terms to describe the relationship between nodes
  *  in a DLL. These include 'previous', 'next', 'first' and 'last', as well as
  *  'before' and 'after'. The precise meaning of these terms is illustrated
  *  below.
  *
- *  Consider a three node DLL whose nodes were added from left to right, and
+ *  Consider a three-node DLL whose nodes were added from left to right, and
  *  whose object pointers are represented by a capital letter.
  *
  *  @image html dllist_abc.jpg
  *
  *  Note that the previous and next pointers of each node are represented by
- *  arrows, and that a crossed out square represents a pointer to NULL. Given
+ *  arrows, and that a crossed-out square represents a pointer to NULL. Given
  *  that nodes were added from left to right, node A is clearly the oldest
  *  node in the DLL (being the first to be added), whilst node C is clearly
  *  the newest node (being the last to be added). If a new node D were to be
@@ -86,6 +92,13 @@
  *  an argument, or dl_add_before() with node C as an argument.
  *
  *  @image html dllist_abdc.jpg
+ *
+ *  The example above refers to the DLL in terms of its individual nodes. In
+ *  the function documentation that follows, the terms 'node' and 'list' are
+ *  both used when referring to a DLL. In general, the term node is used when
+ *  referring to a particular node of a DLL, whilst the term list is used when
+ *  referring to a DLL in general. A DLL that contains a single node may be
+ *  referred to either as a node, or a list.
  *
  *  <H3> Use </H3>
  *
@@ -110,7 +123,7 @@
  *  - dl_add_last()
  *
  *  Additional nodes may be added to the DLL using the same set of functions,
- *  with the exception of dl_create(). If instead of adding a newly created
+ *  with the exception of dl_create(). If instead of adding a newly-created
  *  node to a DLL, an existing node needs to be inserted into a DLL, either
  *  dl_insert_before() or dl_insert_after() may be used.
  *
@@ -123,11 +136,21 @@
  *  whilst dl_destroy() deletes all nodes from a DLL.
  *
  *  For further information about these and other library functions, please
- *  refer to the individual function documentation.
+ *  refer to the individual function documentation. For examples of their use,
+ *  please see the doubly linked list test library.
  *
  *  <H3> Hardware </H3>
  *
  *  The DLL library has no hardware requirements.
+ *
+ *  <H3> Further Reading </H3>
+ *
+ *  <a href = "http://en.wikipedia.org/wiki/Doubly_linked_list">
+ *      Doubly linked list (Wikipedia)</a>
+ *
+ *  <a href = "http://www.amazon.com/
+ *      C-Unleashed-Richard-Heathfield/dp/0672318962">
+ *      C Unleashed (Amazon)</a>
  */
 
 /****************************************************************************
@@ -198,11 +221,12 @@ typedef struct DL_LIST
  ****************************************************************************/
 /**
  *  @brief Create a new DLL node.
- *  @param[out] node A pointer to a pointer to the newly created node.
+ *  @param[out] node A pointer to a pointer to the newly-created node.
  *  @param[in] tag A tag used to identify the new node's object type.
  *  @param[in] object A pointer to the new node's object.
  *  @return #DL_SUCCESS if successful, otherwise #DL_BAD_ARGUMENT or
  *      #DL_NO_MEMORY.
+ *  @remark Creates a new node on the heap.
  */
 uint8 dl_create(DL_LIST **node, uint16 tag, void *object);
 
@@ -247,7 +271,7 @@ DL_LIST *dl_get_first(DL_LIST *list);
  *  @return #DL_SUCCESS if successful, otherwise #DL_BAD_ARGUMENT or
  *      #DL_NO_MEMORY.
  *  @remark If the DLL is empty, the list pointer will be modified from
- *      pointing to NULL to pointing to the newly created node. If the
+ *      pointing to NULL to pointing to the newly-created node. If the
  *      DLL is not empty, the list pointer will remain unchanged.
  *  @warning It is up to the caller to ensure that the list argument
  *      points to an actual list. Passing a pointer to an uninitialised
@@ -274,7 +298,7 @@ DL_LIST *dl_get_last(DL_LIST *list);
  *  @return #DL_SUCCESS if successful, otherwise #DL_BAD_ARGUMENT or
  *      #DL_NO_MEMORY.
  *  @remark If the DLL is empty, the list pointer will be modified from
- *      pointing to NULL to pointing to the newly created node. If the
+ *      pointing to NULL to pointing to the newly-created node. If the
  *      DLL is not empty, the list pointer will remain unchanged.
  *  @warning It is up to the caller to ensure that the list argument
  *      points to an actual list. Passing a pointer to an uninitialised
@@ -302,7 +326,7 @@ DL_LIST *dl_get_previous(DL_LIST *node);
  *  @return #DL_SUCCESS if successful, otherwise #DL_BAD_ARGUMENT or
  *      #DL_NO_MEMORY.
  *  @remark If the DLL is empty, the list pointer will be modified from
- *      pointing to NULL to pointing to the newly created node. If the
+ *      pointing to NULL to pointing to the newly-created node. If the
  *      DLL is not empty, the list pointer will remain unchanged.
  *  @warning It is up to the caller to ensure that the node argument
  *      points to an actual node. Passing a pointer to an uninitialised
@@ -330,7 +354,7 @@ DL_LIST *dl_get_next(DL_LIST *node);
  *  @return #DL_SUCCESS if successful, otherwise #DL_BAD_ARGUMENT or
  *      #DL_NO_MEMORY.
  *  @remark If the DLL is empty, the list pointer will be modified from
- *      pointing to NULL to pointing to the newly created node. If the
+ *      pointing to NULL to pointing to the newly-created node. If the
  *      DLL is not empty, the list pointer will remain unchanged.
  *  @warning It is up to the caller to ensure that the node argument
  *      points to an actual node. Passing a pointer to an uninitialised
@@ -383,8 +407,8 @@ uint8 dl_extract(DL_LIST *node);
  *  @brief Delete a DLL node.
  *  @param[in] node A pointer to a DLL node.
  *  @return #DL_SUCCESS if successful, otherwise #DL_BAD_ARGUMENT.
- *  @remark This function deletes the node, but does not delete the
- *      object that it points to.
+ *  @remark Extracts the node from the DLL, and frees the heap memory
+ *      used by the node.
  *  @warning If the node pointer is the only means of addressing a DLL,
  *      the DLL will be lost.
  *  @warning It is up to the caller to ensure that the node argument
