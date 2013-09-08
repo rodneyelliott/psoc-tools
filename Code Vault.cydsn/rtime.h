@@ -47,16 +47,16 @@
  *  component, a private RT_DATA structure is used as the source.
  *
  *  In order to preserve the integrity of the RTC component, programmers do
- *  not have direct access to the private RT_DATA structure. Any changes to
- *  its temporal values must instead be made using the library functions
- *  rt_set_date() and rt_set_time().
+ *  not have direct access to the libraries private RT_DATA structure. Any
+ *  changes to its temporal values must instead be made using the library
+ *  functions rt_set_date() and rt_set_time().
  *
  *  <H3> Use </H3>
  *
  *  In order to use the library, the programmer must start by calling the
  *  function rt_start(). This starts the RTC component and initialises the
  *  private RT_DATA structure. The functions rt_set_date() and rt_set_time()
- *  may be used to change the temporal values of the private RT_DATA
+ *  may then be used to change the temporal values of the private RT_DATA
  *  structure. The RTC component may then be updated with these new values
  *  using the function rt_write().
  *
@@ -188,7 +188,7 @@ uint8 rt_stop(void);
 /**
  *  @brief Write temporal values to the RTC component.
  *  @return #RT_SUCCESS if successful, otherwise #RT_FAILURE.
- *  @remark Writes values from the private RT_DATA structure
+ *  @remark Writes values from the libraries private RT_DATA structure
  *      to the RTC component.
  *  @remark It is up to the caller to ensure that the RTC component
  *      has been started prior to calling this function. Failure to
@@ -209,12 +209,12 @@ uint8 rt_read(RT_DATA *timestamp);
 
 /**
  *  @brief Set the current date.
- *  @param[in] day Day value.
- *  @param[in] month Month value.
- *  @param[in] year Year value.
+ *  @param[in] day Day value (1-31).
+ *  @param[in] month Month value (1-12).
+ *  @param[in] year Year value (1900-2200).
  *  @return #RT_SUCCESS if successful, otherwise #RT_BAD_ARGUMENT or
  *      #RT_FAILURE.
- *  @remark Writes date values to the private RT_DATA structure.
+ *  @remark Writes date values to the libraries private RT_DATA structure.
  *  @remark It is up to the caller to ensure that the RTC component
  *      has been started prior to calling this function. Failure to
  *      do so will result in this function returning #RT_FAILURE.
@@ -223,12 +223,12 @@ uint8 rt_set_date(uint8 day, uint8 month, uint16 year);
 
 /**
  *  @brief Set the current time.
- *  @param[in] hour Hour value.
- *  @param[in] minute Minute value.
- *  @param[in] second Second value.
+ *  @param[in] hour Hour value (0-23).
+ *  @param[in] minute Minute value (0-59).
+ *  @param[in] second Second value (0-59).
  *  @return #RT_SUCCESS if successful, otherwise #RT_BAD_ARGUMENT or
  *      #RT_FAILURE.
- *  @remark Writes time values to the private RT_DATA structure.
+ *  @remark Writes time values to the libraries private RT_DATA structure.
  *  @remark It is up to the caller to ensure that the RTC component
  *      has been started prior to calling this function. Failure to
  *      do so will result in this function returning #RT_FAILURE.

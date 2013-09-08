@@ -48,11 +48,18 @@
  *  collective use.
  *
  *  For further information about the library functions, please refer to the
- *  individual function documentation.
+ *  individual function documentation. For examples of their use, please see
+ *  the miscellaneous function test library.
  *
  *  <H3> Hardware </H3>
  *
  *  The miscellaneous function library has no hardware requirements.
+ *
+ *  <H3> Further Reading </H3>
+ *
+ *  <a href = "http://www.amazon.com/
+        C-Programming-Language-2nd-Edition/dp/0131103628">
+ *      The C Programming Language, Second Edition (Amazon) </a>
  */
  
 /****************************************************************************
