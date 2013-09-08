@@ -46,12 +46,14 @@
  *  always the case - unlike a circular buffer for instance.
  *
  *  Each node of the deque points to an error object that is owned by the
- *  library. The library operates the deque as a regular queue, with nodes
- *  being added to the rear of the queue, and nodes being removed from the
- *  front of the queue. The advantage of using a deque in this manner is
- *  that it gives the programmer the ability to examine both the last error
- *  object to be added, as well as the first - something that would be
- *  impossible were a queue to be used instead.
+ *  library - that is, the library is responsible for everything from its
+ *  creation to its eventual destruction. The library operates the deque
+ *  as if it were a single-ended queue, with nodes being added to the rear
+ *  of the queue, and nodes being removed from the front of the queue. The
+ *  advantage of using a deque in this manner is that it gives the programmer
+ *  the ability to examine both the last error object to be added, as well as
+ *  the first - something that would be impossible were a queue to be used
+ *  instead.
  *
  *  Two types of error object are supported by the library:
  *
@@ -60,7 +62,9 @@
  *  -# Special. A special error object is one that contains an error message
  *      that has not been predefined.
  *
- *  Both types of error object may include the following optional information:
+ *  Error numbers are enumerated below, whilst error.c contains the predefined
+ *  error messages. Both types of error object may include the following
+ *  optional information:
  *
  *  -# Timestamp. The date and time at which the error occurred.
  *  -# Location. The name and line number of the file in which the error
@@ -78,8 +82,9 @@
  *  must not attempt to use the declared structure for any other purpose.
  *
  *  With the instance declared, nodes may be added to the empty deque using
- *  the library functions er_add_standard() and er_add_special(). Nodes may
- *  be removed from the deque using the function er_remove().
+ *  the library functions er_add_standard() and er_add_special(), both of
+ *  which add nodes to the rear of the deque. Nodes may be removed from the
+ *  front of the deque using the function er_remove().
  *
  *  The functions er_get_first_object() and er_get_last_object() may be used
  *  to examine an error object without removing its node from the deque. The
@@ -92,7 +97,8 @@
  *  deletes all nodes from the deque.
  *
  *  For further information about these library functions, please refer to the
- *  individual function documentation.
+ *  individual function documentation. For examples of their use, please see
+ *  the error management test library.
  *
  *  <H3> Hardware </H3>
  *
@@ -105,6 +111,12 @@
  *  The PSoC5 module must be fitted with a 32.768kHz crystal, and the 'XTAL
  *  32kHz' source must be enabled in the clock section of the project design
  *  wide resource (*.cydwr) file.
+ *
+ *  <H3> Further Reading </H3>
+ *
+ *  Doubly-ended queue library (deque.h)
+ *
+ *  Real-time clock library (rtime.h)
  */
  
 /****************************************************************************
@@ -202,8 +214,8 @@
  *  @remark Adds a node to the rear of the deque.
  *  @warning It is up to the caller to ensure that the real-time clock
  *      component has been started prior to calling this function. Failure
- *      to do so will result in this function returning #ER_FAILURE when
- *      the timestamp error option is selected.
+ *      to do so will result in this function returning #ER_FAILURE if the
+ *      timestamp error option is selected.
  */
 uint8 er_add_standard(DE_LIST *deque, uint32 number, uint8 options);
 #else
@@ -231,8 +243,8 @@ NUMBER, OPTIONS, __FILE__, __LINE__)
  *  @remark Adds a node to the rear of the deque.
  *  @warning It is up to the caller to ensure that the real-time clock
  *      component has been started prior to calling this function. Failure
- *      to do so will result in this function returning #ER_FAILURE when
- *      the timestamp error option is selected.
+ *      to do so will result in this function returning #ER_FAILURE if the
+ *      timestamp error option is selected.
  */
 uint8 er_add_special(DE_LIST *deque, char *message, uint8 options);
 #else
@@ -327,6 +339,9 @@ typedef enum ER_CODES
     
     /* Start of error management library error code block. */
     E00900,
+    
+    /* Start of button library error code block. */
+    E01000,
             
     ER_MAX
 } ER_CODES;
