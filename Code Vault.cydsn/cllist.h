@@ -60,6 +60,12 @@
  *  -# Next. A pointer to the next node in the CLL.
  *  -# Object. A pointer to this node's object.
  *
+ *  Note that each CLL node contains a pointer to an object, rather than the
+ *  object itself. Whilst the library is responsible for managing the object
+ *  pointer, it is up to the programmer to manage the actual object. This
+ *  includes everything from its creation, right though to its eventual
+ *  destruction.
+ *
  *  The library uses several terms to describe the relationship between nodes
  *  in a CLL. These include 'previous', 'next', 'before' and 'after'. The
  *  precise meaning of these terms is illustrated below.
@@ -70,10 +76,10 @@
  *  @image html cllist_a.jpg
  *
  *  Note that the previous and next pointers of the node are represented by
- *  arrows. Unlike a linear doubly linked list (DLL), a CLL has no 'first'
- *  or 'last' node to serve as a position reference. Instead, operations on a
- *  CLL are performed relative to the 'current' node. This initially points to
- *  the first node to be added to a CLL, but may be repositioned by moving it
+ *  arrows. Unlike a doubly linked list (DLL), a CLL has no 'first' or 'last'
+ *  node to serve as a position reference. Instead, operations on a CLL are
+ *  performed relative to the 'current' node. This initially points to the
+ *  first node to be added to the CLL, but may be repositioned by moving it
  *  'forward' or 'backward' relative to its current location. These directions
  *  are defined by the library as follows: forward is in the direction of the
  *  current node's next pointer; backward is in the direction of the current
@@ -119,12 +125,21 @@
  *  CLL, and cl_destroy() deletes all nodes from a CLL.
  *
  *  For further information about these library functions, please refer to the
- *  individual function documentation.
+ *  individual function documentation. For examples of their use, please see
+ *  the circular linked list test library.
  *
  *  <H3> Hardware </H3>
  *
  *  The CLL library has no hardware requirements.
  *
+ *  <H3> Further Reading </H3>
+ *
+ *  <a href = "http://en.wikipedia.org/wiki/Linked_list#Circular_list">
+ *      Circular list (Wikipedia)</a>
+ *
+ *  <a href = "http://www.amazon.com/
+ *      C-Unleashed-Richard-Heathfield/dp/0672318962">
+ *      C Unleashed (Amazon) </a>
  */
  
 /****************************************************************************
