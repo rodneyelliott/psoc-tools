@@ -38,6 +38,7 @@
  ****************************************************************************/
 #include <device.h>
 
+#include "button_test.h"
 #include "cbuff_test.h"
 #include "cllist_test.h"
 #include "deque_test.h"
@@ -87,7 +88,9 @@ void main()
     //cbt_test_1();
     //mit_test_1();
     //rtt_test_1();
-    ert_test_1();
+    //ert_test_1();
+    //but_test_1();
+    but_test_2();
     
     for (;;)
     {
