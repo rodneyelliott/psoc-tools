@@ -42,8 +42,11 @@
  *
  *  The library uses a circular buffer to store button information. A node is
  *  added to the buffer whenever a button is pressed or released. Each node
- *  contains a pointer to a button object that is owned by the library. By
- *  adding a node when a button is both pressed and released, the library
+ *  contains a pointer to a button object that is owned by the library - that
+ *  is, the library is responsible for everything from its creation to its
+ *  eventual destruction.
+ *
+ *  By adding a node when a button is both pressed and released, the library
  *  gives the programmer the ability to design user interfaces that permit
  *  multiple buttons to be pressed at once. It also gives programmers the
  *  ability to make use of the order in which buttons are pressed or released.
@@ -74,7 +77,8 @@
  *  the library.
  *
  *  For further information about these library functions, please refer to the
- *  individual function documentation.
+ *  individual function documentation. For examples of their use, please see
+ *  the button test library.
  *
  *  <H3> Hardware </H3>
  *
@@ -103,6 +107,10 @@
  *
  *  These pin allocations may be changed by the programmer in the project
  *  design wide resource (*.cydwr) file to suit their particular application.
+ *
+ *  <H3> Further Reading </H3>
+ *
+ *  Circular buffer library (cbuff.h)
  */
  
 /****************************************************************************
