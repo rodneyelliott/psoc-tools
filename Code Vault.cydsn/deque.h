@@ -40,10 +40,11 @@
  *  to make use of the abstract data structure known as the deque within their
  *  project.
  *
- *  A deque, or double ended queue, is one which supports the addition and
- *  removal of nodes from either end of the queue. Contrast this to a single
- *  ended queue, which only supports the addition of nodes to the rear of the
- *  queue, and the removal of nodes from the front of the queue.
+ *  A deque, or double-ended queue, is one which supports the addition and
+ *  removal of nodes from either end of the queue. Contrast this method of
+ *  operation to a single-ended queue which only supports the addition of
+ *  nodes to the rear of the queue, and the removal of nodes from the front
+ *  of the queue.
  *
  *  A typical library deque consists of one or more @em nodes, with each node
  *  containing a pointer to a single @em object. By abstracting the structure
@@ -51,6 +52,28 @@
  *  single set of functions that are able to manipulate @em all deques,
  *  regardless of their content. This includes heterogeneous deques in which
  *  the type of object stored within the deque varies from node to node.
+ *
+ *  In order to accomplish this however, the structure of the nodes that
+ *  comprise the deque must be made as generic as possible. This has been
+ *  achieved by basing the deque upon a doubly linked list (DLL), and by
+ *  using the same node structure as the DLL.
+ *
+ *  The nodes of a library deque thus contain the following fields:
+ *
+ *  -# Tag. A tag used to identify this node's object type.
+ *  -# Previous. A pointer to the previous node in the deque.
+ *  -# Next. A pointer to the next node in the deque.
+ *  -# Object. A pointer to this node's object.
+ *
+ *  By comparing the deque interface to that of a DLL, it should be apparent
+ *  that a deque is simply a DLL with certain access restrictions, and a node
+ *  count.
+ *
+ *  Note that each deque node contains a pointer to an object, rather than the
+ *  object itself. Whilst the library is responsible for managing the object
+ *  pointer, it is up to the programmer to manage the actual object. This
+ *  includes everything from its creation, right though to its eventual
+ *  destruction.
  *
  *  <H3> Use </H3>
  *
@@ -73,11 +96,23 @@
  *  deletes all nodes from a deque.
  *
  *  For further information about these library functions, please refer to the
- *  individual function documentation.
+ *  individual function documentation. For examples of their use, please see
+ *  the deque test library.
  *
  *  <H3> Hardware </H3>
  *
  *  The deque library has no hardware requirements.
+ *
+ *  <H3> Further Reading </H3>
+ *
+ *  Doubly linked list library (dllist.h)
+ *
+ *  <a href = "http://en.wikipedia.org/wiki/Double-ended_queue">
+ *      Double-ended queue (Wikipedia)</a>
+ *
+ *  <a href = "http://www.amazon.com/
+ *      C-Unleashed-Richard-Heathfield/dp/0672318962">
+ *      C Unleashed (Amazon)</a>
  */
  
 /****************************************************************************

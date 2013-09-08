@@ -40,10 +40,11 @@
  *  to make use of the abstract data structure known as the queue within their
  *  project.
  *
- *  A queue, or single ended queue, is one that supports the addition of nodes
+ *  A queue, or single-ended queue, is one that supports the addition of nodes
  *  to the rear of the queue, and the removal of nodes from the front of the
- *  queue only. Contrast this to a double ended queue, which supports the
- *  addition and removal of nodes from either end of the queue.
+ *  queue only. Contrast this method of operation to a double-ended queue,
+ *  which supports the addition and removal of nodes from either end of the
+ *  queue.
  *
  *  A typical library queue consists of one or more @em nodes, with each node
  *  containing a pointer to a single @em object. By abstracting the structure
@@ -51,6 +52,28 @@
  *  single set of functions that are able to manipulate @em all queues,
  *  regardless of their content. This includes heterogeneous queues in which
  *  the type of object stored within the queue varies from node to node.
+ *
+ *  In order to accomplish this however, the structure of the nodes that
+ *  comprise the queue must be made as generic as possible. This has been
+ *  achieved by basing the queue upon a doubly linked list (DLL), and by
+ *  using the same node structure as the DLL.
+ *
+ *  The nodes of a library queue thus contain the following fields:
+ *
+ *  -# Tag. A tag used to identify this node's object type.
+ *  -# Previous. A pointer to the previous node in the queue.
+ *  -# Next. A pointer to the next node in the queue.
+ *  -# Object. A pointer to this node's object.
+ *
+ *  By comparing the queue interface to that of a DLL, it should be apparent
+ *  that a queue is simply a DLL with certain access restrictions, and a node
+ *  count.
+ *
+ *  Note that each queue node contains a pointer to an object, rather than the
+ *  object itself. Whilst the library is responsible for managing the object
+ *  pointer, it is up to the programmer to manage the actual object. This
+ *  includes everything from its creation, right though to its eventual
+ *  destruction.
  *
  *  <H3> Use </H3>
  *
@@ -72,11 +95,23 @@
  *  nodes from a queue.
  *
  *  For further information about these library functions, please refer to the
- *  individual function documentation.
+ *  individual function documentation.  For examples of their use, please see
+ *  the queue test library.
  *
  *  <H3> Hardware </H3>
  *
  *  The queue library has no hardware requirements.
+ *
+ *  <H3> Further Reading </H3>
+ *
+ *  Doubly linked list library (dllist.h)
+ *
+ *  <a href = "http://en.wikipedia.org/wiki/Queue_(abstract_data_type)">
+ *      Queue (Wikipedia)</a>
+ *
+ *  <a href = "http://www.amazon.com/
+ *      C-Unleashed-Richard-Heathfield/dp/0672318962">
+ *      C Unleashed (Amazon)</a>
  */
  
 /****************************************************************************
