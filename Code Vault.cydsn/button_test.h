@@ -121,9 +121,9 @@
  *
  *  <H3> Hardware </H3>
  *
- *  The error management library has been designed to run on a Cypress
- *  CY8CKIT-001 development kit fitted with a PSoC5 CY8C5568AXI-060 module. It
- *  requires access to the following components:
+ *  The button test library has been designed to run on a Cypress CY8CKIT-001
+ *  development kit fitted with a PSoC5 CY8C5568AXI-060 module. It requires
+ *  access to the following components:
  *
  *  - Clock_1
  *  - Debouncer_1-8
@@ -187,6 +187,10 @@
 /****************************************************************************
  *  Exported Variables
  ****************************************************************************/
+
+/****************************************************************************
+ *  Exported Functions
+ ****************************************************************************/
 /**
  *  @brief Tests the functions of the button library.
  *  @return #BUT_SUCCESS if successful, otherwise #BUT_FAILURE.
@@ -197,10 +201,6 @@ uint8 but_test_1(void);
  *  @brief Tests the interrupt service routine (ISR) of the button library.
  */
 void but_test_2(void);
-
-/****************************************************************************
- *  Exported Functions
- ****************************************************************************/
 
 #endif
 
