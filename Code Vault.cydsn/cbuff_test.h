@@ -53,7 +53,7 @@
  *
  *  @code
  *  CIRCULAR BUFFER LIBRARY TEST
- *  
+ *
  *  Test    Function                Result
  *  ----    --------                ------
  *     -    Initialise test...      PASS
@@ -103,10 +103,11 @@
  *    37    cb_set_limit()          PASS
  *    38    cb_set_limit()          PASS
  *    39    cb_set_limit()          PASS
- *    40    cb_destroy()            PASS
+ *    40    cb_set_limit()          PASS
  *    41    cb_destroy()            PASS
  *    42    cb_destroy()            PASS
- *  
+ *    43    cb_destroy()            PASS
+ *
  *  TEST PASSED
  *  @endcode
  *

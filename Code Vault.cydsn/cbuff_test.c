@@ -771,25 +771,25 @@ uint8 cbt_test_1(void)
         }
     }
     
+    if (result == CBT_SUCCESS)
+    {
+        if (cb_set_limit(&buffer_2, 10) == CB_SUCCESS)
+        {
+            UART_1_PutString("  40\tcb_set_limit()\t\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("  40\tcb_set_limit()\t\tFAIL\r\n");
+            result = CBT_FAILURE;
+        }
+    }
+    
     /*
      *  Test cb_destroy().
      */
     if (result == CBT_SUCCESS)
     {
         if (cb_destroy(NULL) == CB_BAD_ARGUMENT)
-        {
-            UART_1_PutString("  40\tcb_destroy()\t\tPASS\r\n");
-        }
-        else
-        {
-            UART_1_PutString("  40\tcb_destroy()\t\tFAIL\r\n");
-            result = CBT_FAILURE;
-        }
-    }
-    
-    if (result == CBT_SUCCESS)
-    {
-        if (cb_destroy(&buffer_1) == CB_SUCCESS)
         {
             UART_1_PutString("  41\tcb_destroy()\t\tPASS\r\n");
         }
@@ -802,13 +802,26 @@ uint8 cbt_test_1(void)
     
     if (result == CBT_SUCCESS)
     {
-        if (cb_get_count(&buffer_1) == 0)
+        if (cb_destroy(&buffer_1) == CB_SUCCESS)
         {
             UART_1_PutString("  42\tcb_destroy()\t\tPASS\r\n");
         }
         else
         {
             UART_1_PutString("  42\tcb_destroy()\t\tFAIL\r\n");
+            result = CBT_FAILURE;
+        }
+    }
+    
+    if (result == CBT_SUCCESS)
+    {
+        if (cb_get_count(&buffer_1) == 0)
+        {
+            UART_1_PutString("  43\tcb_destroy()\t\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("  43\tcb_destroy()\t\tFAIL\r\n");
             result = CBT_FAILURE;
         }
     }
