@@ -94,7 +94,7 @@
 /**
  *  @brief The private RT_DATA structure used by the library.
  */
-static RT_DATA *_data = NULL;
+static RT_DATA *_rt_data = NULL;
 
 /****************************************************************************
  *  Exported Functions
@@ -103,16 +103,16 @@ uint8 rt_start(void)
 {
     uint8 result = RT_NO_MEMORY;
     
-    _data = malloc(sizeof(*_data));
+    _rt_data = malloc(sizeof(*_rt_data));
     
-    if (_data != NULL)
+    if (_rt_data != NULL)
     {
-        _data->Sec = _DEFAULT_SECOND;
-        _data->Min = _DEFAULT_MINUTE;
-        _data->Hour = _DEFAULT_HOUR;
-        _data->DayOfMonth = _DEFAULT_DAY;
-        _data->Month = _DEFAULT_MONTH;
-        _data->Year = _DEFAULT_YEAR;
+        _rt_data->Sec = _DEFAULT_SECOND;
+        _rt_data->Min = _DEFAULT_MINUTE;
+        _rt_data->Hour = _DEFAULT_HOUR;
+        _rt_data->DayOfMonth = _DEFAULT_DAY;
+        _rt_data->Month = _DEFAULT_MONTH;
+        _rt_data->Year = _DEFAULT_YEAR;
         
         rt_write();
         
@@ -128,12 +128,12 @@ uint8 rt_stop(void)
 {
     uint8 result = RT_FAILURE;
     
-    if (_data != NULL)
+    if (_rt_data != NULL)
     {
         RTC_1_Stop();
     
-        free(_data);
-        _data = NULL;
+        free(_rt_data);
+        _rt_data = NULL;
         
         result = RT_SUCCESS;
     }
@@ -145,16 +145,16 @@ uint8 rt_write(void)
 {
     uint8 result = RT_FAILURE;
     
-    if (_data != NULL)
+    if (_rt_data != NULL)
     {
         RTC_1_DisableInt();
         
-        RTC_1_WriteSecond(_data->Sec);
-        RTC_1_WriteMinute(_data->Min);
-        RTC_1_WriteHour(_data->Hour);
-        RTC_1_WriteDayOfMonth(_data->DayOfMonth);
-        RTC_1_WriteMonth(_data->Month);
-        RTC_1_WriteYear(_data->Year);
+        RTC_1_WriteSecond(_rt_data->Sec);
+        RTC_1_WriteMinute(_rt_data->Min);
+        RTC_1_WriteHour(_rt_data->Hour);
+        RTC_1_WriteDayOfMonth(_rt_data->DayOfMonth);
+        RTC_1_WriteMonth(_rt_data->Month);
+        RTC_1_WriteYear(_rt_data->Year);
         
         RTC_1_EnableInt();
         
@@ -170,7 +170,7 @@ uint8 rt_read(RT_DATA *timestamp)
     
     if (timestamp != NULL)
     {
-        if (_data != NULL)
+        if (_rt_data != NULL)
         {
             *timestamp = *(RT_DATA *)RTC_1_ReadTime();
             
@@ -189,7 +189,7 @@ uint8 rt_set_date(uint8 day, uint8 month, uint16 year)
 {
     uint8 result = RT_SUCCESS;
     
-    if (_data != NULL)
+    if (_rt_data != NULL)
     {
         if (day < 1 || day > 31)
         {
@@ -208,9 +208,9 @@ uint8 rt_set_date(uint8 day, uint8 month, uint16 year)
         
         if (result == RT_SUCCESS)
         {
-            _data->DayOfMonth = day;
-            _data->Month = month;
-            _data->Year = year;
+            _rt_data->DayOfMonth = day;
+            _rt_data->Month = month;
+            _rt_data->Year = year;
         }
     }
     else
@@ -225,7 +225,7 @@ uint8 rt_set_time(uint8 hour, uint8 minute, uint8 second)
 {
     uint8 result = RT_SUCCESS;
     
-    if (_data != NULL)
+    if (_rt_data != NULL)
     {
         if (hour < 0 || hour > 23)
         {
@@ -244,9 +244,9 @@ uint8 rt_set_time(uint8 hour, uint8 minute, uint8 second)
         
         if (result == RT_SUCCESS)
         {
-            _data->Sec = second;
-            _data->Min = minute;
-            _data->Hour = hour;
+            _rt_data->Sec = second;
+            _rt_data->Min = minute;
+            _rt_data->Hour = hour;
         }
     }
     else
