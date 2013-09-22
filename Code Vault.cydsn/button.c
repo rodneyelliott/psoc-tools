@@ -124,7 +124,7 @@
  *  Prototypes of Local Functions
  ****************************************************************************/
 /**
- *  @brief Create a button object.
+ *  @brief Create a new button object.
  *  @param[out] object A pointer to a pointer to the newly-created object.
  *  @param[in] number The button number.
  *  @param[in] state The button state.
