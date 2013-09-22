@@ -153,7 +153,8 @@ char *ER_MESSAGES[ER_MAX] =
     "E00700: Start of miscellaneous function library error message block.",
     "E00800: Start of real-time clock library error message block.",
     "E00900: Start of error management library error message block.",
-    "E01000: Start of button library error message block."
+    "E01000: Start of button library error message block.",
+    "E01100: Start of finite state machine library error message block."
 };
 
 /****************************************************************************

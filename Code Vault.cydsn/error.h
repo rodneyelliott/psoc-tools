@@ -342,6 +342,9 @@ typedef enum ER_CODES
     
     /* Start of button library error code block. */
     E01000,
+    
+    /* Start of finite state machine library error code block. */
+    E01100,
             
     ER_MAX
 } ER_CODES;
