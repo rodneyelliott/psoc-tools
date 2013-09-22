@@ -52,12 +52,12 @@
 /**
  *  @brief Generic success.
  */
-#define MA_SUCCESS                      0
+#define TE_SUCCESS                      0
 
 /**
  *  @brief Generic failure.
  */
-#define MA_FAILURE                      1
+#define TE_FAILURE                      1
 
 /**
  *  @brief Memory was unable to be allocated from the heap.
@@ -65,12 +65,12 @@
  *  Any function returning this value will free any memory that was
  *  successfully allocated from the heap prior to the allocation failure.
  */
-#define MA_NO_MEMORY                    2
+#define TE_NO_MEMORY                    2
 
 /**
  *  @brief A bad argument was passed to a function.
  */
-#define MA_BAD_ARGUMENT                 3
+#define TE_BAD_ARGUMENT                 3
 
 /****************************************************************************
  *  Typedefs and Structures
