@@ -21,14 +21,15 @@ install it, either:
 
 With this accomplished, generate the documentation for the code vault project
 using [Doxygen][doxygen]. To do this, simply run the project Doxyfile, which
-is located in the Doxygen directory. Note that Graphviz must be installed in
-addition to Doxygen itself.
+is located in the Doxygen directory. Note that [Graphviz][graphviz] must be
+installed in addition to Doxygen.
 
 With the documentation generated, verify that both hardware and software are
 setup properly. This is best done by running the test unit of each of the
 libraries contained in the code vault.
 
 [doxygen]: http://www.stack.nl/~dimitri/doxygen/
+[graphviz]: http://www.graphviz.org/
 
 Compatibility
 =============
