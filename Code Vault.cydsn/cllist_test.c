@@ -833,7 +833,8 @@ uint8 clt_test_1(void)
     _destroy_object(object_3);
     _destroy_object(object_4);
     
-    while (UART_1_ReadTxStatus() != UART_1_TX_STS_FIFO_EMPTY)
+    while ((UART_1_ReadTxStatus() & UART_1_TX_STS_FIFO_EMPTY) !=
+        UART_1_TX_STS_FIFO_EMPTY)
     {
         CyDelay(1);
     }

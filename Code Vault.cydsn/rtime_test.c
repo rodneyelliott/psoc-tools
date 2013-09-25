@@ -730,7 +730,8 @@ uint8 rtt_test_1(void)
     /*
      *  Clean-up test.
      */
-    while (UART_1_ReadTxStatus() != UART_1_TX_STS_FIFO_EMPTY)
+    while ((UART_1_ReadTxStatus() & UART_1_TX_STS_FIFO_EMPTY) !=
+        UART_1_TX_STS_FIFO_EMPTY)
     {
         CyDelay(1);
     }

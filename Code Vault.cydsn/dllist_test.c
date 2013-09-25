@@ -1416,7 +1416,8 @@ uint8 dlt_test_1(void)
     dl_delete(node_4);
     dl_destroy(&list_1);
     
-    while (UART_1_ReadTxStatus() != UART_1_TX_STS_FIFO_EMPTY)
+    while ((UART_1_ReadTxStatus() & UART_1_TX_STS_FIFO_EMPTY) !=
+        UART_1_TX_STS_FIFO_EMPTY)
     {
         CyDelay(1);
     }
