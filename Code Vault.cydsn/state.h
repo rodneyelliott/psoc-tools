@@ -309,6 +309,13 @@ typedef struct ST_DATA
     
     /**
      *  @brief The status of the FSM.
+     *
+     *  This member may be one or more of the following values.
+     *
+     *  Value              | Description
+     *  ------------------ | ---------------------------------------------
+     *  @b ST_HARDWARE_EVENT  | A hardware event has occurred.
+     *  @b ST_CARRIAGE_RETURN | Arbitrary text will be terminated with a CR.
      */
     uint8 status;
 } ST_DATA;
