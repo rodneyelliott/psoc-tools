@@ -391,12 +391,19 @@ uint8 bu_destroy(CB_LIST *buffer)
     
     if (buffer != NULL)
     {
-        while (bu_get_count(buffer) > 0)
+        if (_buffer == NULL)
         {
-            bu_remove_old(buffer);
+            while (bu_get_count(buffer) > 0)
+            {
+                bu_remove_old(buffer);
+            }
+            
+            result = BU_SUCCESS;
         }
-        
-        result = BU_SUCCESS;
+        else
+        {
+            result = BU_FAILURE;
+        }
     }
     
     return result;

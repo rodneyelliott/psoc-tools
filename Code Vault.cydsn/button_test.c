@@ -597,7 +597,7 @@ uint8 but_test_1(void)
     
     if (result == BUT_SUCCESS)
     {
-        if (bu_destroy(&buffer_1) == BU_SUCCESS)
+        if (bu_destroy(&buffer_1) == BU_FAILURE)
         {
             UART_1_PutString("  32\tbu_destroy()\t\tPASS\r\n");
         }
@@ -608,15 +608,47 @@ uint8 but_test_1(void)
         }
     }
     
+    /*
+     *  Initialise bu_destroy() test.
+     */
     if (result == BUT_SUCCESS)
     {
-        if (bu_get_count(&buffer_1) == 0)
+        if (bu_stop(&buffer_1) == BU_SUCCESS)
+        {
+            UART_1_PutString("   -\tInitialise test...\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("   -\tInitialise test...\tFAIL\r\n");
+            result = BUT_FAILURE;
+        }
+    }
+    
+    /*
+     *  Test bu_destroy().
+     */
+    if (result == BUT_SUCCESS)
+    {
+        if (bu_destroy(&buffer_1) == BU_SUCCESS)
         {
             UART_1_PutString("  33\tbu_destroy()\t\tPASS\r\n");
         }
         else
         {
             UART_1_PutString("  33\tbu_destroy()\t\tFAIL\r\n");
+            result = BUT_FAILURE;
+        }
+    }
+    
+    if (result == BUT_SUCCESS)
+    {
+        if (bu_get_count(&buffer_1) == 0)
+        {
+            UART_1_PutString("  34\tbu_destroy()\t\tPASS\r\n");
+        }
+        else
+        {
+            UART_1_PutString("  34\tbu_destroy()\t\tFAIL\r\n");
             result = BUT_FAILURE;
         }
     }
@@ -643,9 +675,7 @@ uint8 but_test_1(void)
     {
         CyDelay(1);
     }
-    
-    bu_stop(&buffer_1);
-    
+        
     UART_1_Stop();
     
     return result;

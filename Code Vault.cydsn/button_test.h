@@ -96,7 +96,9 @@
  *    30    bu_set_limit()          PASS
  *    31    bu_destroy()            PASS
  *    32    bu_destroy()            PASS
+ *     -    Initialise test...      PASS
  *    33    bu_destroy()            PASS
+ *    34    bu_destroy()            PASS
  *
  *  TEST PASSED
  *  @endcode

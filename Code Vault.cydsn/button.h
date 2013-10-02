@@ -287,7 +287,6 @@ uint8 bu_start(CB_LIST *buffer);
  *  @return #BU_SUCCESS if successful, otherwise #BU_BAD_ARGUMENT.
  *  @remark If this function is called before bu_start(), it will
  *      return #BU_FAILURE.
- *  @remark This should be the last library function to be called.
  */
 uint8 bu_stop(CB_LIST *buffer);
 
@@ -373,6 +372,7 @@ uint8 bu_set_limit(CB_LIST *buffer, uint32 limit);
  *  @remark It is up to the caller to ensure that the library components
  *      have been stopped prior to calling this function. Failure to do
  *      so will will result in this function returning #BU_FAILURE.
+ *  @remark This should be the last library function to be called.
  *  @see bu_stop()
  */
 uint8 bu_destroy(CB_LIST *buffer);
