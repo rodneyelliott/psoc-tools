@@ -38,7 +38,7 @@
  ****************************************************************************/
 #include <device.h>
 
-#include "button_test.h"
+//#include "button_test.h"
 //#include "cbuff_test.h"
 //#include "cllist_test.h"
 //#include "deque_test.h"
@@ -48,7 +48,7 @@
 //#include "misc_test.h"
 //#include "queue_test.h"
 //#include "rtime_test.h"
-//#include "state_test.h"
+#include "state_test.h"
 
 /****************************************************************************
  *  Definitions and Macros
@@ -90,10 +90,10 @@ void main()
     //mit_test_1();
     //rtt_test_1();
     //ert_test_1();
-    but_test_1();
+    //but_test_1();
     //but_test_2();
     //stt_test_1();
-    //stt_test_2();
+    stt_test_2();
     
     for (;;)
     {

@@ -84,8 +84,10 @@ static uint8 _compare(char *input, CB_LIST *buffer);
 /**
  *  @brief The private ST_DATA structure used by the library.
  */
-static ST_DATA _st_data;
-
+static ST_DATA _st_data = {{0}};        /* GCC bug 53119 requires double
+                                           braces to suppress a warning
+                                           about the initializer. */
+                                           
 /**
  *  @brief The array of system events.
  */
