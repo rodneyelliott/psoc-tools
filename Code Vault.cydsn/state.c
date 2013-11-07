@@ -320,7 +320,6 @@ uint8 st_add_key(char *key)
 
 uint8 st_is_valid_input(void)
 {
-    uint8 arbitrary_input = ST_FALSE;
     uint32 i = 0;
     ST_OBJECT *object;
     uint8 result = ST_FAILURE;
@@ -386,18 +385,11 @@ uint8 st_is_valid_input(void)
                         
                         result = ST_SUCCESS;
                     }
-                    
-                    arbitrary_input = ST_TRUE;
                 }
                 
                 ++i;
                 
             } while (i < ST_EVENT_MAXIMUM && result == ST_FAILURE);
-            
-            if (arbitrary_input != ST_TRUE)
-            {
-                st_empty_buffer();
-            }
                     
             isr_2_StartEx(st_interrupt);
         }
