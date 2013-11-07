@@ -560,6 +560,12 @@ void st_state_4_event_0(void)
     
     st_empty_buffer();
     
+    while ((UART_1_ReadTxStatus() & UART_1_TX_STS_FIFO_EMPTY) !=
+        UART_1_TX_STS_FIFO_EMPTY)
+    {
+        CyDelay(1);
+    }
+    
     UART_1_Stop();
     
     st_stop();
